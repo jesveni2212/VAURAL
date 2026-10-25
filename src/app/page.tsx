@@ -25,22 +25,25 @@ export default function HomePage() {
                 <p className="section-kicker">Lo que hacemos</p>
                 <h2 className="section-title" id="services-title">Todo lo que tu negocio necesita para verse mejor online.</h2>
               </div>
-              <p className="section-intro">En VAURAL creamos soluciones concretas para que tu negocio tenga una presencia digital clara, atractiva y útil.</p>
+              <div className="section-intro-block">
+                <p className="section-intro">En VAURAL creamos soluciones concretas para que tu negocio tenga una presencia digital clara, atractiva y útil.</p>
+                <a className="text-link" href="#planes-web">Ver planes y servicios <span aria-hidden="true">↘</span></a>
+              </div>
             </div>
-            <ServiceGrid />
-            <SelectionSummary />
           </div>
         </section>
 
-        <section className="section section-tight" id="planes-web" aria-labelledby="plans-title">
+        <section className="section plans-section" id="planes-web" aria-labelledby="plans-title">
           <div className="wrap">
             <div className="section-heading">
               <div>
                 <p className="section-kicker">Nuestros planes web</p>
-                <h2 className="section-title" id="plans-title">Tu idea tiene un lugar en internet.</h2>
+                <h2 className="section-title" id="plans-title">Combiná lo que tu negocio necesita hoy.</h2>
               </div>
-              <p className="section-intro">Combiná servicios según lo que tu negocio necesita hoy.</p>
+              <p className="section-intro">Elegí uno o varios servicios y armamos una propuesta a medida, sin precios publicados.</p>
             </div>
+            <ServiceGrid />
+            <SelectionSummary />
           </div>
         </section>
 

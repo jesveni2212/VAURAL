@@ -23,6 +23,10 @@ html {
   scroll-behavior: smooth;
 }
 
+[id] {
+  scroll-margin-top: 96px;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -444,6 +448,10 @@ a {
   padding-top: 0;
 }
 
+.plans-section {
+  padding-top: 36px;
+}
+
 .section-heading {
   display: flex;
   align-items: end;
@@ -464,6 +472,15 @@ a {
   max-width: 390px;
   margin: 0;
   color: var(--muted);
+}
+
+.section-intro-block {
+  max-width: 390px;
+}
+
+.section-intro-block .text-link {
+  display: inline-flex;
+  margin-top: 16px;
 }
 
 .contact-placeholder {
@@ -684,17 +701,17 @@ a {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .service-card {
   position: relative;
   display: flex;
-  min-height: 425px;
+  min-height: 360px;
   flex-direction: column;
   overflow: hidden;
-  padding: 25px;
+  padding: 19px;
   border: 1px solid var(--line);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
   transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
@@ -740,30 +757,30 @@ a {
 }
 
 .service-icon {
-  margin: 31px 0 15px;
+  margin: 22px 0 11px;
   color: var(--silver);
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .service-card h3 {
   margin: 0 0 9px;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   letter-spacing: -0.04em;
 }
 
 .service-card > p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.91rem;
+  font-size: 0.8rem;
 }
 
 .service-includes {
   display: grid;
   gap: 7px;
-  margin: 20px 0;
+  margin: 15px 0;
   padding: 0;
   color: #c7d0dc;
-  font-size: 0.8rem;
+  font-size: 0.73rem;
   list-style: none;
 }
 
@@ -787,7 +804,7 @@ a {
 .selection-button {
   position: relative;
   z-index: 1;
-  padding: 9px 11px;
+  padding: 8px 9px;
   border: 1px solid rgba(211, 222, 237, 0.28);
   border-radius: 999px;
   background: transparent;
@@ -871,6 +888,46 @@ a {
   color: #aebdcb;
   cursor: pointer;
   font-size: 0.77rem;
+}
+
+.portfolio-card {
+  display: block;
+  margin-top: 25px;
+  padding: 17px 19px;
+  border: 1px solid rgba(200, 212, 227, 0.28);
+  background: linear-gradient(135deg, rgba(200, 212, 227, 0.08), rgba(255, 255, 255, 0.02));
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200, 212, 227, 0.58);
+  background: linear-gradient(135deg, rgba(200, 212, 227, 0.13), rgba(255, 255, 255, 0.03));
+}
+
+.portfolio-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--silver);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-card strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.portfolio-card-description {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .about-grid,
@@ -1041,6 +1098,11 @@ a {
   to { opacity: 1; }
 }
 
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-card:last-child { grid-column: 1 / -1; width: calc(50% - 7px); justify-self: center; }
+}
+
 @media (max-width: 850px) {
   .nav { min-height: 68px; }
   .nav-links { display: none; }
@@ -1079,6 +1141,7 @@ a {
   .about-grid,
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card:last-child { grid-column: 1 / -1; width: calc(50% - 7px); justify-self: center; }
   .detail-grid { grid-template-columns: 1fr; gap: 34px; }
   .detail-kicker { margin-top: 55px; }
   .process-grid { grid-template-columns: 1fr 1fr; }
@@ -1096,6 +1159,7 @@ a {
   .hero-actions .button { width: 100%; }
   .ticker-inner { justify-content: flex-start; gap: 12px; }
   .services-grid { grid-template-columns: 1fr; }
+  .service-card:last-child { grid-column: auto; width: auto; }
   .selection-summary { align-items: flex-start; flex-direction: column; }
   .selection-summary-actions { justify-content: flex-start; }
   .form-fields-grid { grid-template-columns: 1fr; }

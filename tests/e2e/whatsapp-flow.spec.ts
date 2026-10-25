@@ -2,6 +2,10 @@ import { expect, test } from "@playwright/test";
 
 test("combina servicios y prepara una consulta de WhatsApp", async ({ page }) => {
   await page.goto("/");
+  await expect(page.getByRole("link", { name: "Planes web" })).toHaveAttribute("href", "#planes-web");
+  await expect(page.getByRole("link", { name: "Proceso" })).toHaveAttribute("href", "#proceso");
+  await expect(page.locator("#planes-web .service-card")).toHaveCount(5);
+
   await page.getByRole("button", { name: "Seleccionar Web informativa" }).click();
   await expect(page.getByRole("button", { name: "Quitar Web informativa" })).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("button", { name: "Seleccionar Catálogo digital" }).click();
@@ -20,4 +24,12 @@ test("combina servicios y prepara una consulta de WhatsApp", async ({ page }) =>
   expect(decodedMessage).toContain("Web informativa");
   expect(decodedMessage).toContain("Catálogo digital");
   expect(decodedMessage).toContain("Quiero mejorar la presencia digital de mi negocio.");
+});
+
+test("mantiene el catálogo legible y sin desborde en móvil", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  await expect(page.locator("#planes-web .service-card")).toHaveCount(5);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
