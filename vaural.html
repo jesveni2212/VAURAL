@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+<meta name="description" content="VAURAL crea páginas web, contenido para redes sociales y catálogos digitales para negocios.">
+<title>VAURAL — Páginas web y contenido digital</title>
+<style>
+:root{--bg:#171b22;--panel:#202630;--panel2:#28313d;--ink:#f6f8fb;--muted:#c0c8d3;--line:rgba(211,222,237,.19);--silver:#c8d4e3;--silver2:#98a9bf;--white:#fff;--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topline{height:3px;background:linear-gradient(90deg,#7e8ea5,#eef3fb,#63758e)}header{position:sticky;top:0;z-index:20;background:rgba(23,27,34,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-size:1.45rem;font-weight:850;letter-spacing:-.075em}.brand .aur{color:var(--silver)}.brand-mark{width:34px;height:34px;border:1px solid #728198;display:grid;place-items:center;clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);color:var(--silver);font-size:.8rem;font-weight:800;letter-spacing:-.08em}.links{display:flex;align-items:center;gap:27px;color:#c2c9d4;font-size:.9rem}.links a:hover{color:#fff}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid #aab9cc;background:var(--silver);color:#0b0d12;padding:12px 17px;border-radius:5px;font-weight:750;font-size:.9rem;transition:.2s}.nav-cta:hover,.btn:hover{transform:translateY(-2px);background:#e4ebf4}.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn.ghost:hover{border-color:var(--silver);background:rgba(184,199,219,.08)}.hero{position:relative;overflow:hidden;padding:104px 0 88px;border-bottom:1px solid var(--line)}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 35%,rgba(145,169,201,.23),transparent 40%),linear-gradient(115deg,transparent 55%,rgba(184,199,219,.035) 55.1%,transparent 55.5%);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}.eyebrow{display:flex;align-items:center;gap:11px;color:var(--silver);text-transform:uppercase;letter-spacing:.17em;font-size:.72rem;font-weight:800}.eyebrow:before{content:"";width:27px;height:1px;background:var(--silver)}h1{font-size:clamp(3.5rem,7.2vw,6.8rem);line-height:.93;letter-spacing:-.085em;margin:24px 0 22px;font-weight:850}h1 .shine{color:var(--silver);position:relative}h1 .shine:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:3px;background:linear-gradient(90deg,var(--silver),transparent)}.hero p{max-width:560px;color:#b3bdcb;font-size:1.08rem;line-height:1.8}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:29px}.micro{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;color:#8f9aaa;font-size:.8rem}.micro span:before{content:"↗";color:var(--silver);margin-right:8px}.visual{min-height:410px;position:relative;display:grid;place-items:center}.visual-grid{position:absolute;inset:7% 0;background-image:linear-gradient(rgba(184,199,219,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(184,199,219,.07) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse,black 25%,transparent 72%)}.orbital{position:absolute;width:310px;height:310px;border:1px solid rgba(184,199,219,.25);border-radius:50%;transform:rotate(-28deg) scaleY(.72)}.orbital:before,.orbital:after{content:"";position:absolute;inset:23px;border:1px solid rgba(184,199,219,.22);border-radius:50%}.orbital:after{inset:-28px 50px;border-color:rgba(184,199,219,.12)}.symbol{position:relative;font-size:clamp(5rem,10vw,8rem);font-weight:900;letter-spacing:-.13em;line-height:1;color:#f1f4f8;text-shadow:0 0 40px rgba(184,199,219,.15)}.symbol .aura{color:var(--silver)}.symbol-caption{position:absolute;bottom:30px;right:0;border-left:2px solid var(--silver);padding:7px 0 7px 14px;color:#a7b2c1;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}.corner{position:absolute;width:34px;height:34px;border-color:#8798af;border-style:solid;opacity:.7}.c1{top:22px;left:18px;border-width:1px 0 0 1px}.c2{bottom:24px;right:18px;border-width:0 1px 1px 0}.ticker{border-bottom:1px solid var(--line);overflow:hidden}.ticker-inner{display:flex;justify-content:space-between;gap:22px;padding:17px 0;color:#8f9bab;font-size:.73rem;text-transform:uppercase;letter-spacing:.14em;flex-wrap:wrap}.ticker b{color:#dbe2ec;font-weight:650}.section{padding:90px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:36px}.section-kicker{color:var(--silver);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800}.section h2{font-size:clamp(2.2rem,4.2vw,3.7rem);line-height:1.04;letter-spacing:-.065em;margin:13px 0 0;max-width:690px}.section-intro{max-width:390px;color:var(--muted);margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{padding:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));min-height:240px;position:relative;overflow:hidden;transition:.22s}.service:hover{transform:translateY(-4px);border-color:rgba(184,199,219,.45);background:linear-gradient(145deg,rgba(184,199,219,.09),rgba(255,255,255,.01))}.service-no{font-size:.72rem;color:#7f8da1;letter-spacing:.13em}.service-icon{margin:24px 0 15px;color:var(--silver)}.service h3{margin:0 0 8px;font-size:1.18rem;letter-spacing:-.03em}.service p{margin:0;color:var(--muted);font-size:.92rem}.service:after{content:"";position:absolute;right:-24px;bottom:-28px;width:95px;height:95px;border:1px solid rgba(184,199,219,.13);transform:rotate(45deg)}.offer{display:grid;grid-template-columns:1fr 1fr;gap:18px}.offer-card{padding:32px;border:1px solid var(--line);background:var(--panel);position:relative}.offer-card.featured{background:linear-gradient(140deg,#303c4d,#202630);border-color:rgba(184,199,219,.4)}.offer-card h3{font-size:1.55rem;letter-spacing:-.04em;margin:12px 0}.offer-card p{color:var(--muted)}.offer-card ul{padding:0;list-style:none;display:grid;gap:10px;color:#d6dce5;margin:22px 0}.offer-card li:before{content:"↗";color:var(--silver);margin-right:10px}.offer-card .btn{margin-top:8px}.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:65px;align-items:start}.about-panel{padding:28px;border:1px solid var(--line);background:linear-gradient(140deg,#28313d,#1b2029)}.about-panel .big{font-size:4.2rem;font-weight:850;letter-spacing:-.1em;color:var(--silver);line-height:1}.about-panel p{color:var(--muted)}.about-copy p{color:#b3bdcb;font-size:1rem}.values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:25px}.value{border-top:1px solid var(--line);padding-top:13px}.value b{display:block;font-size:.94rem}.value span{color:var(--muted);font-size:.86rem}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}.step{padding:23px;border-right:1px solid var(--line)}.step:last-child{border:0}.step-num{font-size:.75rem;color:var(--silver);letter-spacing:.1em}.step h3{font-size:1rem;margin:18px 0 7px}.step p{font-size:.88rem;color:var(--muted);margin:0}.contact{padding:76px 0;background:linear-gradient(110deg,#28313d,#171b22 75%);border-top:1px solid var(--line)}.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}.contact h2{font-size:clamp(2.4rem,4.5vw,4rem);line-height:1;letter-spacing:-.07em;margin:16px 0}.contact-copy p{color:var(--muted);max-width:410px}.contact-meta{margin-top:30px;color:#b5bfcd;font-size:.9rem}.contact-meta div{margin:9px 0}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:.82rem;color:#c8d0db}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#1a2029;color:var(--ink);border-radius:4px;padding:13px 14px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--silver)}.field textarea{min-height:110px;resize:vertical}.form-note{grid-column:1/-1;color:#8e99a8;font-size:.78rem}.form .btn{grid-column:1/-1;cursor:pointer;border:0;min-height:48px}footer{border-top:1px solid var(--line);padding:25px 0;color:#8993a2;font-size:.82rem}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-brand{font-weight:850;letter-spacing:-.06em;color:#e9edf3;font-size:1.1rem}.footer-brand span{color:var(--silver)}.mobile-menu{display:none}
+@media(max-width:850px){.links{gap:15px}.links a:not(.nav-cta){display:none}.hero-grid,.about,.contact-grid{grid-template-columns:1fr}.hero{padding:70px 0 55px}.hero-grid{gap:30px}.visual{min-height:330px}.section{padding:68px 0}.section-head{align-items:start;flex-direction:column}.cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}.contact-grid{gap:32px}}
+@media(max-width:540px){.wrap{width:min(var(--max),calc(100% - 28px))}.nav{height:68px}.brand{font-size:1.25rem}.brand-mark{width:30px;height:30px}.links .nav-cta{padding:10px 12px;font-size:.78rem}.hero{padding-top:55px}h1{font-size:clamp(3.25rem,16vw,5rem)}.hero p{font-size:1rem}.visual{min-height:280px}.orbital{width:230px;height:230px}.symbol{font-size:4.8rem}.symbol-caption{bottom:10px;font-size:.62rem}.ticker-inner{justify-content:flex-start;gap:12px}.cards,.offer,.values{grid-template-columns:1fr}.service{min-height:210px}.offer-card{padding:24px}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)!important}.step:last-child{border-bottom:0!important}.form{grid-template-columns:1fr}.field.full,.form-note,.form .btn{grid-column:auto}.contact{padding:58px 0}.section h2{font-size:2.5rem}}
+
+.plans-cards{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.plan-service{display:flex;flex-direction:column;min-height:100%;padding:24px}
+.plan-service .service-icon{font-size:1.8rem;margin:19px 0 12px}
+.plan-service h3{font-size:1.28rem}
+.plan-list{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px;color:#c3ccd8;font-size:.87rem}
+.plan-list li:before{content:"↗";color:var(--silver);margin-right:9px}
+.plan-service .btn{margin-top:auto;align-self:flex-start}
+.plan-featured{border-color:rgba(200,212,227,.52);background:linear-gradient(145deg,rgba(125,147,176,.16),rgba(255,255,255,.025))}
+.plan-note{border-left:2px solid var(--silver);padding:10px 12px;background:rgba(184,199,219,.07);font-size:.82rem;color:#c4ccd8;margin:0 0 20px}
+.plan-note strong{color:#f4f6fa}
+.plans-footnote{color:var(--muted);font-size:.85rem;margin-top:20px}
+@media(max-width:900px){.plans-cards{grid-template-columns:1fr}.plan-service{min-height:0}.plan-service .btn{margin-top:10px}}
+
+</style>
+<style>
+  .symbol-caption {
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-left: 0;
+    padding: 7px 0;
+    text-align: center;
+  }
+  .symbol-caption::before,
+  .symbol-caption::after {
+    display: none;
+  }
+  @media(max-width:540px) {
+    .symbol-caption {
+      bottom: 10px;
+      gap: 8px;
+      font-size: .6rem;
+      letter-spacing: .08em;
+    }
+    .symbol-caption::before,
+    .symbol-caption::after {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="VAURAL inicio"><span class="brand-mark">V/L</span><span>V<span class="aur">AURA</span>L</span></a>
+    <nav class="links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a><a href="#planes-web">Planes web</a><a href="#nosotros">Nosotros</a>
+      <a class="nav-cta" href="#contacto">Hablemos <span>↗</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Páginas web · Contenido para redes</div>
+      <h1>Tu negocio.<br><span class="shine">En su mejor</span><br>versión digital.</h1>
+      <p>Creamos páginas web, contenido para redes sociales y catálogos digitales para que tu negocio se presente de forma profesional, muestre lo que ofrece y conecte con más clientes.</p>
+      <div class="actions"><a class="btn" href="#contacto">Hablemos de tu proyecto <span>↗</span></a><a class="btn ghost" href="#servicios">Explorar servicios</a></div>
+      <div class="micro"><span>Diseño pensado para tu marca</span><span>Contenido visual</span><span>Soluciones prácticas</span></div>
+    </div>
+    <div class="visual" aria-label="Identidad visual VAURAL">
+      <div class="visual-grid"></div><div class="orbital"></div><div class="corner c1"></div><div class="corner c2"></div>
+      <div class="symbol">V<span class="aura">AURA</span>L</div>
+      <div class="symbol-caption">Páginas web · Contenido para redes · Catálogos digitales</div>
+    </div>
+  </div>
+</section>
+<div class="ticker"><div class="wrap ticker-inner"><b>VAURAL</b><span>Páginas web</span><span>Contenido para redes</span><span>Catálogos digitales</span><span>Diseño para negocios</span><span>01 — 04</span></div></div>
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="section-head"><div><div class="section-kicker">Lo que hacemos</div><h2>Todo lo que tu negocio necesita para verse mejor online.</h2></div><p class="section-intro">Nos enfocamos en tres soluciones concretas para que tu negocio tenga una presencia digital clara, atractiva y útil.</p></div>
+    <div class="cards">
+      <article class="service"><div class="service-no">01 / WEB</div><div class="service-icon">⌗</div><h3>Páginas web</h3><p>Sitios modernos, adaptables a celulares y computadoras, que presentan tu negocio y facilitan el contacto con tus clientes.</p></article>
+      <article class="service"><div class="service-no">02 / REDES SOCIALES</div><div class="service-icon">▤</div><h3>Contenido para redes</h3><p>Diseño y planificación de piezas visuales para comunicar lo que hacés y mantener una presencia coherente en redes sociales.</p></article>
+      <article class="service"><div class="service-no">03 / CATÁLOGOS</div><div class="service-icon">▦</div><h3>Catálogos digitales</h3><p>Catálogos visuales para organizar tus productos o servicios y compartirlos fácilmente con tus clientes, incluso por WhatsApp.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="planes-web">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-kicker">Nuestros planes web</div><h2>Tu idea tiene un lugar en internet.</h2></div>
+      <p class="section-intro">En VAURAL creamos tres tipos de páginas web según lo que tu negocio necesita. Contanos tu idea y prepararemos una cotización a medida.</p>
+    </div>
+    <div class="cards plans-cards">
+      <article class="service plan-service">
+        <div class="service-no">PLAN 01 / PRESENTACIÓN</div>
+        <div class="service-icon">▣</div>
+        <h3>Web informativa</h3>
+        <p>Una presencia online profesional para presentar tu negocio, tus servicios y tus datos de contacto.</p>
+        <ul class="plan-list">
+          <li>Diseño adaptable a celulares y computadoras</li>
+          <li>Secciones de información y servicios</li>
+          <li>Botón de contacto por WhatsApp</li>
+          <li>Redes sociales y formulario de contacto</li>
+          <li>Configuración SEO básica</li>
+        </ul>
+        <a class="btn ghost quote-plan" data-plan="Web informativa" href="#contacto">Cotizar este plan ↗</a>
+      </article>
+      <article class="service plan-service plan-featured">
+        <div class="service-no">PLAN 02 / INTERACCIÓN</div>
+        <div class="service-icon">⌘</div>
+        <h3>Web interactiva</h3>
+        <p>Una web que permite a tus visitantes realizar acciones, enviar solicitudes y comunicarse con tu negocio.</p>
+        <ul class="plan-list">
+          <li>Todo lo incluido en la web informativa</li>
+          <li>Formularios personalizados</li>
+          <li>Secciones dinámicas y galerías</li>
+          <li>Solicitudes de presupuesto o reservas según el proyecto</li>
+          <li>Funciones interactivas según alcance</li>
+        </ul>
+        <a class="btn quote-plan" data-plan="Web interactiva" href="#contacto">Cotizar este plan ↗</a>
+      </article>
+      <article class="service plan-service">
+        <div class="service-no">PLAN 03 / CATÁLOGO Y PEDIDOS</div>
+        <div class="service-icon">▦</div>
+        <h3>Tienda online con pedidos por WhatsApp</h3>
+        <p>Mostrá tus productos online y recibí pedidos directamente en el WhatsApp de tu negocio.</p>
+        <ul class="plan-list">
+          <li>Catálogo con fotos, descripciones y precios</li>
+          <li>Categorías y fichas de productos</li>
+          <li>Botones de pedido por WhatsApp</li>
+          <li>Mensaje de pedido preparado con el producto</li>
+          <li>Información de envíos, entregas o retiros</li>
+        </ul>
+        <div class="plan-note"><strong>Importante:</strong> no incluye carrito con cobro integrado ni pasarela de pagos. El pedido y el pago se coordinan directamente entre el negocio y el comprador.</div>
+        <a class="btn ghost quote-plan" data-plan="Tienda online con pedidos por WhatsApp" href="#contacto">Cotizar este plan ↗</a>
+      </article>
+    </div>
+    <p class="plans-footnote">Cada proyecto es diferente. La cotización final depende del alcance, la cantidad de secciones o productos, las funciones necesarias y los materiales disponibles.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><div><div class="section-kicker">Elegí lo que necesitás</div><h2>Una solución para cada etapa de tu negocio.</h2></div><p class="section-intro">Podés contratar cada servicio por separado o combinar varios para lograr una presencia digital más consistente.</p></div>
+    <div class="offer">
+      <article class="offer-card"><div class="section-kicker">01 / SERVICIOS INDIVIDUALES</div><h3>Empezá por una necesidad</h3><p>Trabajamos sobre el servicio que hoy le hace falta a tu negocio.</p><ul><li>Una página web para presentar tu negocio</li><li>Contenido visual para redes sociales</li><li>Catálogo digital de productos o servicios</li><li>Actualización de materiales digitales</li></ul><a class="btn ghost" href="#contacto" data-interest="Servicio individual">Consultar un servicio ↗</a></article>
+      <article class="offer-card featured"><div class="section-kicker">02 / PRESENCIA DIGITAL</div><h3>Todo conectado</h3><p>Combinamos web, contenido y catálogo para que tu negocio se vea profesional en los principales puntos de contacto.</p><ul><li>Página web alineada con tu marca</li><li>Contenido para tus redes sociales</li><li>Catálogo digital fácil de compartir</li><li>Una imagen coherente en todos los canales</li></ul><a class="btn" href="#contacto" data-interest="Paquete de presencia digital">Consultar paquete integral ↗</a></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="nosotros">
+  <div class="wrap about">
+    <div><div class="section-kicker">Quiénes somos</div><h2>Diseño digital pensado para negocios reales.</h2><div class="about-panel"><div class="big">V<span style="color:#f4f6fa">AURA</span>L</div><p>Combinamos diseño web, contenido visual y organización de catálogos para que cada negocio pueda mostrar mejor lo que hace.</p></div></div>
+    <div class="about-copy"><p>VAURAL reúne desarrollo web y creación de contenido digital en una propuesta práctica para negocios que quieren mejorar cómo se presentan online. Nos enfocamos en crear herramientas visuales claras, funcionales y alineadas con cada marca.</p><p>Trabajamos con emprendedores, profesionales, comercios y empresas que necesitan una página web, contenido para redes sociales o un catálogo digital para mostrar sus productos y servicios.</p><div class="values"><div class="value"><b>Diseño funcional</b><span>Claro, atractivo y útil.</span></div><div class="value"><b>Adaptado a tu marca</b><span>Una imagen coherente y profesional.</span></div><div class="value"><b>Comunicación cercana</b><span>Trabajamos en conjunto.</span></div><div class="value"><b>Soluciones prácticas</b><span>Servicios según tu necesidad.</span></div></div></div>
+  </div>
+</section>
+<section class="section" id="proceso" style="padding-top:0">
+  <div class="wrap"><div class="section-head"><div><div class="section-kicker">Cómo trabajamos</div><h2>Un proceso claro, de principio a fin.</h2></div><p class="section-intro">Cada proyecto empieza por escuchar, continúa con un plan y avanza con comunicación transparente.</p></div>
+    <div class="steps"><div class="step"><div class="step-num">PASO 01</div><h3>Conocemos</h3><p>Entendemos tu negocio y qué necesitás crear.</p></div><div class="step"><div class="step-num">PASO 02</div><h3>Definimos</h3><p>Definimos el servicio, el estilo y el alcance.</p></div><div class="step"><div class="step-num">PASO 03</div><h3>Construimos</h3><p>Diseñamos y desarrollamos las piezas acordadas.</p></div><div class="step"><div class="step-num">PASO 04</div><h3>Mejoramos</h3><p>Entregamos el material listo para utilizar.</p></div></div>
+  </div>
+</section>
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-copy"><div class="section-kicker">Hablemos</div><h2>Mostremos lo mejor de tu negocio.</h2><p>Contanos si necesitás una página web, contenido para redes o un catálogo digital. Hablemos de tu idea.</p><div class="contact-meta"><div>↗ Páginas web para negocios</div><div>↗ Contenido para redes sociales</div><div>↗ Catálogos digitales de productos y servicios</div></div></div>
+    <form class="form" id="contactForm">
+      <div class="field"><label for="name">Nombre</label><input id="name" name="name" placeholder="Tu nombre" required></div>
+      <div class="field"><label for="business">Empresa o negocio</label><input id="business" name="business" placeholder="Nombre de tu negocio"></div>
+      <div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" placeholder="tu@correo.com"></div>
+      <div class="field"><label for="service">¿Qué necesitás?</label><select id="service" name="service"><option value="Quiero asesoramiento">Quiero asesoramiento</option><option>Web informativa</option><option>Web interactiva</option><option>Tienda online con pedidos por WhatsApp (sin pagos integrados)</option><option>Contenido para redes sociales</option><option>Catálogo digital</option><option>Paquete de presencia digital (web + contenido + catálogo)</option><option>Otro proyecto</option></select></div>
+      <div class="field full"><label for="message">Contanos un poco sobre tu proyecto</label><textarea id="message" name="message" placeholder="¿Qué te gustaría lograr?"></textarea></div>
+      <div class="form-note">Al enviar, se abrirá WhatsApp con tu mensaje preparado para que puedas revisarlo antes de enviarlo.</div>
+      <button class="btn" type="submit">Continuar por WhatsApp <span>↗</span></button>
+    </form>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><a class="footer-brand" href="#inicio">V<span>AURA</span>L</a><span>© <span id="year"></span> VAURAL. Páginas web, contenido y catálogos digitales.</span><a href="#inicio">Volver arriba ↑</a></div></footer>
+<script>
+/* IMPORTANTE: reemplazar por el número real de WhatsApp con código de país, solo dígitos. Ejemplo de formato: 595XXXXXXXXX */
+const WHATSAPP_NUMBER = "595992396700";
+document.getElementById("year").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-plan]").forEach(link => link.addEventListener("click", () => {
+  const service = document.getElementById("service");
+  service.value = link.dataset.plan;
+}));
+document.querySelectorAll("[data-interest]").forEach(link => link.addEventListener("click", () => {
+  const service = document.getElementById("service");
+  service.value = link.dataset.interest;
+}));
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "REEMPLAZAR_CON_TU_NUMERO") {
+    alert("La página está lista. Antes de usar el formulario, reemplazá WHATSAPP_NUMBER en el código por el número real con código de país.");
+    return;
+  }
+  const data = new FormData(this);
+  const message = [
+    "Hola, VAURAL. Quiero consultar por un proyecto.",
+    "",
+    "Nombre: " + (data.get("name") || ""),
+    "Empresa/negocio: " + (data.get("business") || ""),
+    "Correo: " + (data.get("email") || ""),
+    "Servicio: " + (data.get("service") || ""),
+    "Proyecto: " + (data.get("message") || "Quiero conversar sobre mi proyecto.")
+  ].join("\n");
+  window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+});
+</script>
+</body>
+</html>
