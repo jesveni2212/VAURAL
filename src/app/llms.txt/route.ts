@@ -4,7 +4,7 @@ export function GET() {
   const content = [
     "# VAURAL",
     "",
-    "> VAURAL crea páginas web, contenido para redes sociales y catálogos digitales para negocios.",
+    `> ${siteConfig.description}`,
     "",
     "## Sitio",
     "",

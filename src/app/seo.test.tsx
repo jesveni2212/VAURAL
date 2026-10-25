@@ -9,7 +9,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 
 describe("SEO foundation", () => {
   it("defines canonical, description and social image metadata", () => {
-    expect(metadata.description).toBeTruthy();
+    expect(metadata.description).toContain("negocios en Paraguay");
     expect(metadata.alternates).toEqual({ canonical: "/" });
     expect(metadata.openGraph).toMatchObject({ images: [{ url: "/opengraph-image" }] });
     expect(metadata.twitter).toMatchObject({ images: ["/opengraph-image"] });
@@ -18,7 +18,11 @@ describe("SEO foundation", () => {
   it("allows crawlers, publishes the sitemap and describes the site for AI tools", async () => {
     const result = robots();
 
-    expect(result.rules).toEqual({ userAgent: "*", allow: "/" });
+    expect(result.rules).toEqual([
+      { userAgent: "GPTBot", disallow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "*", allow: "/" },
+    ]);
     expect(result.sitemap).toContain("/sitemap.xml");
     expect(sitemap().length).toBe(6);
 
