@@ -1,5 +1,7 @@
 import { Hero } from "@/components/hero/Hero";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
+import { SelectionSummary } from "@/components/catalog/SelectionSummary";
+import { ServiceGrid } from "@/components/catalog/ServiceGrid";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -25,11 +27,8 @@ export default function HomePage() {
               </div>
               <p className="section-intro">En VAURAL creamos soluciones concretas para que tu negocio tenga una presencia digital clara, atractiva y útil.</p>
             </div>
-            <div className="shell-placeholder">
-              <span className="placeholder-number">01 — 05</span>
-              <h3>El catálogo de servicios se incorpora en la próxima etapa.</h3>
-              <p>La estructura ya está preparada para seleccionar y combinar servicios.</p>
-            </div>
+            <ServiceGrid />
+            <SelectionSummary />
           </div>
         </section>
 
