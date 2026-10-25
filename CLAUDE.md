@@ -150,6 +150,20 @@ No agregar campos de precio al modelo público del MVP. Si en el futuro se neces
 - Vercel con configuración automática de Next.js.
 - No definir un output directory personalizado salvo que una necesidad concreta lo justifique.
 
+## Comandos de desarrollo
+
+```bash
+npm install
+npm run dev
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run test:e2e
+```
+
+Para desarrollo local, crear `.env.local` a partir de `.env.example`. El archivo local no se versiona.
+
 ## Reglas de colaboración
 
 - Leer la especificación antes de modificar la arquitectura.

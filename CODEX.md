@@ -15,6 +15,20 @@ Este archivo acompaña a `CLAUDE.md`, que es la guía principal del proyecto. An
 - Número de WhatsApp: `595992396700` mediante `NEXT_PUBLIC_WHATSAPP_NUMBER`.
 - No incorporar pagos, autenticación ni panel administrativo en el MVP.
 
+## Comandos verificados
+
+```bash
+npm install
+npm run dev
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run test:e2e
+```
+
+Usar `.env.local` para el número de WhatsApp durante desarrollo; no subirlo al repositorio.
+
 ## Criterios de implementación
 
 - Conservar la identidad visual grafito/plata.
