@@ -596,6 +596,92 @@ a {
   font-weight: 750;
 }
 
+.detail-page {
+  min-height: 100svh;
+  padding: 42px 0 90px;
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(145, 169, 201, 0.2), transparent 35%),
+    var(--bg);
+}
+
+.detail-shell {
+  max-width: 1060px;
+}
+
+.detail-back {
+  color: var(--silver-muted);
+  font-size: 0.8rem;
+}
+
+.detail-kicker {
+  margin-top: 90px;
+  color: var(--silver);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.detail-grid h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.09em;
+}
+
+.detail-lead {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: #b3bdcb;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.detail-panel {
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+}
+
+.detail-panel ul {
+  display: grid;
+  gap: 10px;
+  margin: 13px 0 27px;
+  padding: 0;
+  color: #c7d0dc;
+  list-style: none;
+  font-size: 0.87rem;
+}
+
+.detail-panel li::before {
+  content: "↗";
+  margin-right: 9px;
+  color: var(--silver);
+}
+
+.detail-note {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -993,6 +1079,8 @@ a {
   .about-grid,
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
+  .detail-grid { grid-template-columns: 1fr; gap: 34px; }
+  .detail-kicker { margin-top: 55px; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .process-step:nth-child(2) { border-right: 0; }
   .process-step:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
@@ -1019,5 +1107,7 @@ a {
   .process-step { border-right: 0; border-bottom: 1px solid var(--line); }
   .process-step:last-child { border-bottom: 0; }
   .contact-section { padding: 58px 0; }
+  .detail-page { padding-top: 28px; }
+  .detail-grid h1 { font-size: clamp(3.5rem, 17vw, 6rem); }
   .footer-inner { align-items: flex-start; flex-direction: column; }
 }
