@@ -18,6 +18,7 @@ const services: Service[] = [
     ],
     deliverables: ["Landing page publicada", "Estructura de contenido", "Configuración responsive"],
     featured: true,
+    highlighted: true,
     order: 1,
   },
   {
@@ -54,6 +55,7 @@ const services: Service[] = [
       "Información de envíos, entregas o retiros",
     ],
     deliverables: ["Catálogo navegable", "Selección de productos", "Flujo de pedido por WhatsApp"],
+    highlighted: true,
     order: 3,
   },
   {

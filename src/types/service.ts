@@ -10,5 +10,6 @@ export type Service = {
   includes: string[];
   deliverables: string[];
   featured?: boolean;
+  highlighted?: boolean;
   order: number;
 };
