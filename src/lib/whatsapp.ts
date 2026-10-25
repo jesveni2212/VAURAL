@@ -38,11 +38,20 @@ export function buildWhatsAppMessage(input: WhatsAppMessageInput): string {
 }
 
 export function buildWhatsAppUrl(input: WhatsAppMessageInput): string {
-  const phoneNumber = normalizePhoneNumber(input.phoneNumber);
+  return buildWhatsAppQuickUrl(input.phoneNumber, buildWhatsAppMessage(input));
+}
 
-  if (!phoneNumber) {
+export function buildWhatsAppQuickUrl(phoneNumber: string, message: string): string {
+  const normalizedPhoneNumber = normalizePhoneNumber(phoneNumber);
+  const trimmedMessage = message.trim();
+
+  if (!normalizedPhoneNumber) {
     throw new Error("Se necesita un número de WhatsApp válido.");
   }
 
-  return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(buildWhatsAppMessage(input))}`;
+  if (!trimmedMessage) {
+    throw new Error("Se necesita un mensaje válido.");
+  }
+
+  return `https://wa.me/${normalizedPhoneNumber}?text=${encodeURIComponent(trimmedMessage)}`;
 }

@@ -38,8 +38,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   if (!service) notFound();
 
+  const serviceStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    serviceType: service.title,
+    url: `${siteConfig.url}/servicios/${service.slug}`,
+    provider: { "@type": "ProfessionalService", name: siteConfig.name, url: siteConfig.url },
+    areaServed: { "@type": "Country", name: "Paraguay" },
+  };
+
   return (
     <main className="detail-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }} />
       <div className="wrap detail-shell">
         <Link className="detail-back" href="/#servicios">← Volver a servicios</Link>
         <div className="detail-kicker">VAURAL / {service.category}</div>

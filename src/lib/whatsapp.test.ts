@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildWhatsAppMessage, buildWhatsAppUrl } from "./whatsapp";
+import { buildWhatsAppMessage, buildWhatsAppQuickUrl, buildWhatsAppUrl } from "./whatsapp";
 
 const input = {
   phoneNumber: "+595 992 396 700",
@@ -27,6 +27,17 @@ describe("WhatsApp utilities", () => {
 
     expect(url.startsWith("https://wa.me/595992396700?text=")).toBe(true);
     expect(url).toContain(encodeURIComponent("Web informativa"));
+  });
+
+  it("builds a quick consultation URL for the floating CTA", () => {
+    const url = buildWhatsAppQuickUrl(
+      "+595 992 396 700",
+      "Hola, quiero consultar por los servicios de VAURAL",
+    );
+
+    expect(url).toBe(
+      `https://wa.me/595992396700?text=${encodeURIComponent("Hola, quiero consultar por los servicios de VAURAL")}`,
+    );
   });
 
   it("rejects a missing phone number", () => {

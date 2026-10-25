@@ -2,9 +2,16 @@ import { expect, test } from "@playwright/test";
 
 test("combina servicios y prepara una consulta de WhatsApp", async ({ page }) => {
   await page.goto("/");
+  expect(await page.content()).toContain("VAURAL");
+  await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.getByRole("link", { name: "Planes web" })).toHaveAttribute("href", "#planes-web");
   await expect(page.getByRole("link", { name: "Proceso" })).toHaveAttribute("href", "#proceso");
   await expect(page.locator("#planes-web .service-card")).toHaveCount(5);
+
+  const floatingWhatsApp = page.getByRole("link", { name: /abrir whatsapp/i });
+  const floatingWhatsAppHref = await floatingWhatsApp.getAttribute("href");
+  expect(floatingWhatsAppHref).toContain("wa.me/595992396700");
+  expect(decodeURIComponent(floatingWhatsAppHref ?? "")).toContain("Hola, quiero consultar por los servicios de VAURAL");
 
   await page.getByRole("button", { name: "Seleccionar Web informativa" }).click();
   await expect(page.getByRole("button", { name: "Quitar Web informativa" })).toHaveAttribute("aria-pressed", "true");

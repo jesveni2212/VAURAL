@@ -82,7 +82,7 @@ Assert the five cards remain present at mobile width and the document has no hor
 - Create: `src/app/icon.svg`
 - Create: `src/app/opengraph-image.tsx`
 - Create: `src/app/not-found.tsx`
-- Create: `public/llms.txt`
+- Create: `src/app/llms.txt/route.ts`
 - Test: `src/app/seo.test.ts`
 
 **Interfaces:**

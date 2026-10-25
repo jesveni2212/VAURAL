@@ -15,6 +15,7 @@ describe("service detail routes", () => {
 
     expect(metadata.title).toBe("Web informativa");
     expect(metadata.description).toContain("presencia online");
+    expect(metadata.alternates).toEqual({ canonical: "/servicios/web-informativa" });
   });
 
   it("returns empty metadata for an unknown service", async () => {
