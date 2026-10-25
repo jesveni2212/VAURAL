@@ -1,3 +1,5 @@
+import { QuoteSection } from "@/components/quote/QuoteSection";
+
 export function ContactSection() {
   return (
     <section className="contact-section" id="contacto" aria-labelledby="contact-title">
@@ -12,11 +14,7 @@ export function ContactSection() {
             <div>↗ Catálogos digitales</div>
           </div>
         </div>
-        <div className="contact-placeholder">
-          <span className="section-kicker">Próximo paso</span>
-          <h3>Seleccioná un servicio para empezar tu consulta.</h3>
-          <p>El formulario breve y el mensaje personalizado de WhatsApp se incorporan en la siguiente etapa.</p>
-        </div>
+        <QuoteSection />
       </div>
     </section>
   );

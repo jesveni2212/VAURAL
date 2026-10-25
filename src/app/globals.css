@@ -483,6 +483,119 @@ a {
   color: var(--muted);
 }
 
+.quote-form {
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: rgba(18, 23, 31, 0.48);
+}
+
+.selected-form-services {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.field-label {
+  display: block;
+  color: #d6dfe9;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.field-label small {
+  color: var(--silver-muted);
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+
+.form-service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.form-service-list span {
+  padding: 7px 9px;
+  border: 1px solid rgba(200, 212, 227, 0.3);
+  border-radius: 999px;
+  color: var(--silver-strong);
+  font-size: 0.75rem;
+}
+
+.field-help,
+.form-note {
+  margin: 8px 0 0;
+  color: #8f9baa;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  outline: none;
+  padding: 12px 13px;
+  background: #1a2029;
+  color: var(--ink);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #6f7b89;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--silver);
+}
+
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.field-error,
+.form-status-error {
+  color: #e4b0b0;
+  font-size: 0.75rem;
+}
+
+.form-submit {
+  width: 100%;
+  cursor: pointer;
+}
+
+.form-status {
+  margin: 0;
+  color: #c4d3df;
+  font-size: 0.78rem;
+}
+
+.text-link {
+  color: var(--silver);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -897,6 +1010,8 @@ a {
   .services-grid { grid-template-columns: 1fr; }
   .selection-summary { align-items: flex-start; flex-direction: column; }
   .selection-summary-actions { justify-content: flex-start; }
+  .form-fields-grid { grid-template-columns: 1fr; }
+  .field-full { grid-column: auto; }
   .section { padding: 68px 0; }
   .section-title { font-size: 2.5rem; }
   .values { grid-template-columns: 1fr; }
