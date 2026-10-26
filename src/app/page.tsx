@@ -27,7 +27,7 @@ export default function HomePage() {
               </div>
               <div className="section-intro-block">
                 <p className="section-intro">En VAURAL creamos soluciones concretas para que tu negocio tenga una presencia digital clara, atractiva y útil.</p>
-                <a className="text-link" href="#planes-web">Ver planes y servicios <span aria-hidden="true">↘</span></a>
+                <a className="text-link" href="#planes-web">Ver planes y servicios</a>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function HomePage() {
         <ContactSection />
       </main>
       <footer className="site-footer">
-        <div className="wrap footer-inner"><a className="footer-brand" href="#inicio">V<span>AURA</span>L</a><span>© {new Date().getFullYear()} VAURAL. Páginas web, contenido y catálogos digitales.</span><a href="#inicio">Volver arriba ↑</a></div>
+        <div className="wrap footer-inner"><a className="footer-brand" href="#inicio">V<span>AURA</span>L</a><span>© {new Date().getFullYear()} VAURAL. Páginas web, contenido y catálogos digitales.</span><a href="#inicio">Volver arriba</a></div>
       </footer>
     </>
   );

@@ -26,7 +26,6 @@ export function AboutSection() {
           <a className="portfolio-card" href="https://jesusvenialgo.com" target="_blank" rel="noreferrer">
             <span className="portfolio-card-topline">
               <span className="portfolio-card-label">Portfolio · Proyecto destacado</span>
-              <span aria-hidden="true">↗</span>
             </span>
             <strong>jesusvenialgo.com</strong>
             <span className="portfolio-card-description">Una muestra de diseño y desarrollo digital detrás de VAURAL.</span>

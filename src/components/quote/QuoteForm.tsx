@@ -114,9 +114,9 @@ export function QuoteForm({ selectedServices }: QuoteFormProps) {
       </div>
 
       <p className="form-note">No mostramos precios en la web. Te orientamos y preparamos una cotización personalizada por WhatsApp.</p>
-      <button className="button button-primary form-submit" type="submit">Continuar por WhatsApp <span aria-hidden="true">↗</span></button>
+      <button className="button button-primary form-submit" type="submit">Continuar por WhatsApp</button>
       {status ? <p className={`form-status${status.startsWith("No") ? " form-status-error" : ""}`} role="status">{status}</p> : null}
-      {submittedInput ? <WhatsAppLink input={submittedInput}>Abrir WhatsApp nuevamente ↗</WhatsAppLink> : null}
+      {submittedInput ? <WhatsAppLink input={submittedInput}>Abrir WhatsApp nuevamente</WhatsAppLink> : null}
     </form>
   );
 }

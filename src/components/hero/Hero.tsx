@@ -67,7 +67,7 @@ export function Hero() {
           </motion.p>
           <motion.div className="hero-actions" variants={reveal}>
             <a className="button button-primary" href="#servicios">
-              Explorar servicios <span aria-hidden="true">↗</span>
+              Explorar servicios
             </a>
             <a className="button button-ghost" href="#contacto">
               Hablemos de tu proyecto

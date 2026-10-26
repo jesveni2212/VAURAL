@@ -29,7 +29,7 @@ export function SelectionSummary() {
       </div>
       <div className="selection-summary-actions">
         <button className="text-button" type="button" onClick={clearSelection}>Limpiar selección</button>
-        <a className="button button-primary" href="#contacto">Continuar con mi consulta <span aria-hidden="true">↗</span></a>
+        <a className="button button-primary" href="#contacto">Continuar con mi consulta</a>
       </div>
     </aside>
   );

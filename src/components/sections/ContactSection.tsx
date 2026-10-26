@@ -9,9 +9,9 @@ export function ContactSection() {
           <h2 className="contact-title" id="contact-title">Mostremos lo mejor de tu negocio.</h2>
           <p className="contact-copy">Elegí los servicios que te interesan y contanos qué te gustaría lograr. Te orientamos por WhatsApp.</p>
           <div className="contact-meta">
-            <div>↗ Páginas web para negocios</div>
-            <div>↗ Contenido para redes sociales</div>
-            <div>↗ Catálogos digitales</div>
+            <div>Páginas web para negocios</div>
+            <div>Contenido para redes sociales</div>
+            <div>Catálogos digitales</div>
           </div>
         </div>
         <QuoteSection />

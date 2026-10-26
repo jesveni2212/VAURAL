@@ -814,7 +814,7 @@ a {
 }
 
 .detail-panel li::before {
-  content: "↗";
+  content: "•";
   margin-right: 9px;
   color: var(--silver);
 }
@@ -857,6 +857,19 @@ a {
   background: linear-gradient(90deg, transparent, var(--silver-strong), transparent);
   animation: vaural-card-scan 5.5s ease-in-out infinite;
   pointer-events: none;
+}
+
+.service-card-sheen {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  width: 34%;
+  height: 124%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(246, 248, 251, 0.11), transparent);
+  filter: blur(12px);
+  opacity: 0.52;
+  transform: skewX(-16deg);
 }
 
 .service-card::after {
@@ -939,7 +952,7 @@ a {
 }
 
 .service-includes li::before {
-  content: "↗";
+  content: "•";
   margin-right: 8px;
   color: var(--silver);
 }
@@ -1292,6 +1305,10 @@ a {
     left: 28%;
     opacity: 0.9;
     animation: none;
+  }
+
+  .service-card-sheen {
+    display: none;
   }
 }
 

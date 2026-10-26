@@ -53,7 +53,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     <main className="detail-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }} />
       <div className="wrap detail-shell">
-        <Link className="detail-back" href="/#servicios">← Volver a servicios</Link>
+        <Link className="detail-back" href="/#servicios">Volver a servicios</Link>
         <div className="detail-kicker">VAURAL / {service.category}</div>
         <div className="detail-grid">
           <div>

@@ -24,7 +24,7 @@ export function SiteHeader() {
             </a>
           ))}
           <a className="nav-cta" href="#contacto">
-            Hablemos <span aria-hidden="true">↗</span>
+            Hablemos
           </a>
         </nav>
 
@@ -50,7 +50,7 @@ export function SiteHeader() {
             </a>
           ))}
           <a href="#contacto" onClick={() => setMenuOpen(false)}>
-            Hablemos de tu proyecto <span aria-hidden="true">↗</span>
+            Hablemos de tu proyecto
           </a>
         </nav>
       ) : null}

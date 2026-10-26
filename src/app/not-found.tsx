@@ -8,7 +8,7 @@ export default function NotFound() {
         <p className="not-found-code">404</p>
         <h1>Esta página no está disponible.</h1>
         <p>El enlace puede haber cambiado, pero todavía podemos ayudarte a mostrar mejor tu negocio.</p>
-        <Link className="button button-primary" href="/#inicio">Volver al inicio <span aria-hidden="true">↗</span></Link>
+        <Link className="button button-primary" href="/#inicio">Volver al inicio</Link>
       </div>
     </main>
   );

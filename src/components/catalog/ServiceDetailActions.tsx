@@ -14,7 +14,7 @@ export function ServiceDetailActions({ serviceId }: ServiceDetailActionsProps) {
   return (
     <div className="detail-actions">
       <button className="button button-primary" type="button" onClick={() => toggleService(serviceId)} aria-pressed={selected}>
-        {selected ? "Servicio seleccionado" : "Sumar a mi consulta"} <span aria-hidden="true">↗</span>
+        {selected ? "Servicio seleccionado" : "Sumar a mi consulta"}
       </button>
       <Link className="button button-ghost" href="/#servicios">Ver todos los servicios</Link>
     </div>
