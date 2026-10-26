@@ -35,13 +35,13 @@ describe("service catalog", () => {
     expect(screen.getByText("Seleccioná uno o varios servicios para preparar una consulta personalizada.")).toBeTruthy();
   });
 
-  it("highlights the first and third services", () => {
+  it("applies the same visual treatment to every service", () => {
     const view = render(<CatalogFixture />);
 
     const cards = view.container.querySelectorAll(".service-card");
 
-    expect(cards[0].classList.contains("service-card-highlighted")).toBe(true);
-    expect(cards[2].classList.contains("service-card-highlighted")).toBe(true);
-    expect(view.container.querySelectorAll(".service-featured")).toHaveLength(2);
+    expect(cards).toHaveLength(5);
+    expect(view.container.querySelectorAll(".service-card-highlighted")).toHaveLength(0);
+    expect(view.container.querySelectorAll(".service-featured")).toHaveLength(0);
   });
 });

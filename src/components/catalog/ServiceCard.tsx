@@ -16,13 +16,10 @@ const categoryLabels = {
 } as const;
 
 export function ServiceCard({ service, selected, onToggle }: ServiceCardProps) {
-  const highlighted = service.highlighted === true;
-
   return (
-    <article className={`service-card${highlighted ? " service-card-highlighted" : ""}${selected ? " service-card-selected" : ""}`}>
+    <article className={`service-card${selected ? " service-card-selected" : ""}`}>
       <div className="service-card-topline">
         <span className="service-number">0{service.order} / {categoryLabels[service.category]}</span>
-        {service.featured || highlighted ? <span className="service-featured">Destacado</span> : null}
       </div>
       <div className="service-icon" aria-hidden="true">
         {service.category === "web" ? "⌘" : service.category === "contenido" ? "▤" : "▦"}
