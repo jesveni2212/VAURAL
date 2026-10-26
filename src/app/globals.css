@@ -461,12 +461,26 @@ a {
     linear-gradient(115deg, rgba(35, 45, 57, 0.95), rgba(23, 27, 34, 0.98) 68%);
 }
 
+.plans-section::before {
+  content: "";
+  position: absolute;
+  top: -48%;
+  left: -16%;
+  width: 132%;
+  height: 196%;
+  pointer-events: none;
+  opacity: 0.2;
+  background: conic-gradient(from 90deg, transparent 0 22%, rgba(200, 212, 227, 0.3) 30%, transparent 39% 64%, rgba(81, 127, 153, 0.28) 73%, transparent 83%);
+  filter: blur(28px);
+  animation: vaural-plans-atmosphere 16s linear infinite;
+}
+
 .plans-section::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.25;
+  opacity: 0.16;
   background: linear-gradient(120deg, transparent 0 36%, rgba(200, 212, 227, 0.08) 36.2% 36.4%, transparent 36.7% 70%, rgba(200, 212, 227, 0.05) 70.2% 70.4%, transparent 70.7%);
 }
 
@@ -850,7 +864,7 @@ a {
 }
 
 .service-card-highlighted {
-  border-color: rgba(246, 248, 251, 0.92);
+  border-color: rgba(246, 248, 251, 0.46);
   box-shadow: 0 0 0 1px rgba(246, 248, 251, 0.14), 0 18px 50px rgba(3, 8, 14, 0.24);
   animation: vaural-card-breathe 5.5s ease-in-out infinite;
 }
@@ -1246,6 +1260,10 @@ a {
   0%, 18% { left: -45%; opacity: 0; }
   35%, 67% { left: 102%; opacity: 1; }
   84%, 100% { left: 102%; opacity: 0; }
+}
+
+@keyframes vaural-plans-atmosphere {
+  to { transform: rotate(360deg); }
 }
 
 @media (max-width: 1100px) {
