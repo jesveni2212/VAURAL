@@ -172,6 +172,12 @@ a {
   background: var(--silver-strong);
 }
 
+.nav-links a.nav-cta:hover {
+  border-color: var(--silver);
+  background: var(--panel-strong);
+  color: var(--ink);
+}
+
 .mobile-toggle,
 .mobile-nav {
   display: none;
