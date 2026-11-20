@@ -1,7 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { type FormEvent, type ReactNode, useState } from "react";
+import { Magnetic } from "@/components/motion/Magnetic";
 import type { Service } from "@/types/service";
+import { siteConfig } from "@/data/site";
 import { buildWhatsAppUrl, type WhatsAppMessageInput } from "@/lib/whatsapp";
 import { WhatsAppLink } from "@/components/whatsapp/WhatsAppLink";
 
@@ -59,7 +61,7 @@ export function QuoteForm({ selectedServices }: QuoteFormProps) {
     }
 
     const input: WhatsAppMessageInput = {
-      phoneNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
+      phoneNumber: siteConfig.whatsappNumber,
       name: values.name,
       business: values.business,
       email: values.email,
@@ -69,54 +71,82 @@ export function QuoteForm({ selectedServices }: QuoteFormProps) {
 
     try {
       const url = buildWhatsAppUrl(input);
-      const popup = window.open(url, "_blank", "noopener,noreferrer");
+      // With "noopener" window.open always returns null, so its result can't tell whether a popup was blocked.
+      window.open(url, "_blank", "noopener,noreferrer");
       setSubmittedInput(input);
-      setStatus(popup ? "WhatsApp se abrió con tu consulta preparada." : "El navegador bloqueó la apertura automática. Usá el enlace para continuar.");
+      setStatus("Abrimos WhatsApp con tu consulta preparada. Si no se abrió, usá el enlace de abajo.");
     } catch {
       setStatus("No pudimos preparar WhatsApp. Revisá la configuración del número.");
     }
   }
 
   return (
-    <form className="quote-form" onSubmit={submit} noValidate>
-      <div className="selected-form-services">
-        <span className="field-label">Servicios seleccionados</span>
+    <form className="reveal rounded-3xl border border-line bg-bg p-6 md:p-9" onSubmit={submit} noValidate>
+      <div>
+        <span className="label-mono text-muted">Planes seleccionados</span>
         {selectedServices.length ? (
-          <div className="form-service-list">
-            {selectedServices.map((service) => <span key={service.id}>{service.title}</span>)}
+          <div className="mt-3 flex flex-wrap gap-2">
+            {selectedServices.map((service) => (
+              <span key={service.id} className="rounded-full bg-fg px-3 py-1 text-sm text-bg">
+                {service.title}
+              </span>
+            ))}
           </div>
         ) : (
-          <p className="field-help">Todavía no seleccionaste un servicio desde el catálogo.</p>
+          <p className="mt-2 text-muted">
+            Todavía no elegiste un plan. <a href="#planes" className="text-fg underline underline-offset-4">Elegilo acá</a>.
+          </p>
         )}
-        {errors.services ? <p className="field-error">{errors.services}</p> : null}
+        <FieldError message={errors.services} />
       </div>
 
-      <div className="form-fields-grid">
-        <label className="field">
-          <span className="field-label">Nombre</span>
-          <input value={values.name} onChange={(event) => updateValue("name", event.target.value)} aria-invalid={Boolean(errors.name)} placeholder="Tu nombre" />
-          {errors.name ? <span className="field-error">{errors.name}</span> : null}
-        </label>
-        <label className="field">
-          <span className="field-label">Empresa o negocio</span>
-          <input value={values.business} onChange={(event) => updateValue("business", event.target.value)} placeholder="Nombre de tu negocio" />
-        </label>
-        <label className="field">
-          <span className="field-label">Correo electrónico <small>opcional</small></span>
-          <input type="email" value={values.email} onChange={(event) => updateValue("email", event.target.value)} aria-invalid={Boolean(errors.email)} placeholder="tu@correo.com" />
-          {errors.email ? <span className="field-error">{errors.email}</span> : null}
-        </label>
-        <label className="field field-full">
-          <span className="field-label">Objetivo del proyecto</span>
-          <textarea value={values.objective} onChange={(event) => updateValue("objective", event.target.value)} aria-invalid={Boolean(errors.objective)} placeholder="¿Qué te gustaría lograr?" />
-          {errors.objective ? <span className="field-error">{errors.objective}</span> : null}
-        </label>
+      <div className="mt-8 grid gap-x-6 gap-y-7 sm:grid-cols-2">
+        <Field label="Nombre" error={errors.name}>
+          <input className={inputClass} value={values.name} onChange={(event) => updateValue("name", event.target.value)} aria-invalid={Boolean(errors.name)} placeholder="Tu nombre" autoComplete="name" />
+        </Field>
+        <Field label="Empresa o negocio">
+          <input className={inputClass} value={values.business} onChange={(event) => updateValue("business", event.target.value)} placeholder="Nombre de tu negocio" autoComplete="organization" />
+        </Field>
+        <Field label="Correo electrónico (opcional)" error={errors.email} wide>
+          <input className={inputClass} type="email" value={values.email} onChange={(event) => updateValue("email", event.target.value)} aria-invalid={Boolean(errors.email)} placeholder="tu@correo.com" autoComplete="email" />
+        </Field>
+        <Field label="Objetivo del proyecto" error={errors.objective} wide>
+          <textarea className={`${inputClass} min-h-28 resize-y`} value={values.objective} onChange={(event) => updateValue("objective", event.target.value)} aria-invalid={Boolean(errors.objective)} placeholder="¿Qué te gustaría lograr?" />
+        </Field>
       </div>
 
-      <p className="form-note">No mostramos precios en la web. Te orientamos y preparamos una cotización personalizada por WhatsApp.</p>
-      <button className="button button-primary form-submit" type="submit">Continuar por WhatsApp</button>
-      {status ? <p className={`form-status${status.startsWith("No") ? " form-status-error" : ""}`} role="status">{status}</p> : null}
-      {submittedInput ? <WhatsAppLink input={submittedInput}>Abrir WhatsApp nuevamente</WhatsAppLink> : null}
+      <p className="mt-7 text-sm text-muted">No mostramos precios en la web. Te orientamos y preparamos una cotización personalizada por WhatsApp.</p>
+      <Magnetic className="mt-6 inline-block">
+        <button className="rounded-full bg-fg px-7 py-4 font-medium text-bg transition-colors duration-300 hover:bg-accent hover:text-on-accent" type="submit">
+          Continuar por WhatsApp
+        </button>
+      </Magnetic>
+      {status ? (
+        <p className={`mt-4 text-sm ${status.startsWith("No") ? "text-red-600" : "text-muted"}`} role="status">
+          {status}
+        </p>
+      ) : null}
+      {submittedInput ? (
+        <WhatsAppLink input={submittedInput} className="mt-2 inline-block text-sm underline underline-offset-4">
+          Abrir WhatsApp nuevamente
+        </WhatsAppLink>
+      ) : null}
     </form>
   );
+}
+
+const inputClass = "w-full border-0 border-b border-line bg-transparent py-2.5 text-lg outline-none placeholder:text-muted/70";
+
+function Field({ label, error, wide = false, children }: { label: string; error?: string; wide?: boolean; children: ReactNode }) {
+  return (
+    <label className={`block ${wide ? "sm:col-span-2" : ""}`}>
+      <span className="label-mono text-muted">{label}</span>
+      <span className="field-line mt-1">{children}</span>
+      <FieldError message={error} />
+    </label>
+  );
+}
+
+function FieldError({ message }: { message?: string }) {
+  return message ? <span className="mt-2 block text-sm text-red-600">{message}</span> : null;
 }

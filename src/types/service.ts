@@ -1,15 +1,13 @@
-export type ServiceCategory = "web" | "contenido" | "catalogo";
+export type PillarId = "asesoria" | "web" | "contenido" | "marketing";
 
 export type Service = {
-  id: string;
+  id: PillarId;
   slug: string;
   title: string;
-  category: ServiceCategory;
   shortDescription: string;
   description: string;
+  disciplines: string[];
   includes: string[];
   deliverables: string[];
-  featured?: boolean;
-  highlighted?: boolean;
   order: number;
 };

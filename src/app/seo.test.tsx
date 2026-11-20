@@ -24,11 +24,14 @@ describe("SEO foundation", () => {
       { userAgent: "*", allow: "/" },
     ]);
     expect(result.sitemap).toContain("/sitemap.xml");
-    expect(sitemap().length).toBe(6);
+    expect(sitemap().length).toBe(5);
 
     const llmsResponse = await getLlms();
     expect(llmsResponse.headers.get("content-type")).toContain("text/plain");
-    expect(await llmsResponse.text()).toContain("# VAURAL");
+    const llms = await llmsResponse.text();
+    expect(llms).toContain("# VAURAL");
+    expect(llms).toContain("#planes");
+    expect(llms).not.toContain("#proceso");
   });
 
   it("renders business structured data and a custom 404 heading", () => {
@@ -37,7 +40,8 @@ describe("SEO foundation", () => {
     const structuredData = JSON.parse(script?.textContent ?? "{}");
 
     expect(structuredData["@type"]).toBe("ProfessionalService");
-    expect(structuredData.hasOfferCatalog.itemListElement).toHaveLength(5);
+    expect(structuredData.hasOfferCatalog.itemListElement).toHaveLength(4);
+    expect(structuredData.serviceType).toContain("Marketing digital");
 
     const notFoundView = render(<NotFound />);
     expect(notFoundView.getByRole("heading", { level: 1 }).textContent).toContain("página no está disponible");

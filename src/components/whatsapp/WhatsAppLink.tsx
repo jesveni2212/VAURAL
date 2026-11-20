@@ -7,7 +7,7 @@ type WhatsAppLinkProps = {
   className?: string;
 };
 
-export function WhatsAppLink({ input, children, className = "text-link" }: WhatsAppLinkProps) {
+export function WhatsAppLink({ input, children, className = "underline underline-offset-4" }: WhatsAppLinkProps) {
   let href: string | null = null;
 
   try {
@@ -16,7 +16,7 @@ export function WhatsAppLink({ input, children, className = "text-link" }: Whats
     href = null;
   }
 
-  if (!href) return <span className="form-status form-status-error">Configurá el número de WhatsApp para continuar.</span>;
+  if (!href) return <span className="text-sm text-red-600">Configurá el número de WhatsApp para continuar.</span>;
 
   return <a className={className} href={href} target="_blank" rel="noreferrer">{children}</a>;
 }

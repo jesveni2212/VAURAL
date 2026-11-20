@@ -6,15 +6,15 @@ import { QuoteForm } from "./QuoteForm";
 
 const selectedServices: Service[] = [
   {
-    id: "web-informativa",
-    slug: "web-informativa",
-    title: "Web informativa",
-    category: "web",
+    id: "web",
+    slug: "paginas-web",
+    title: "Páginas web",
     shortDescription: "Una web clara.",
     description: "Una web clara.",
+    disciplines: ["Webs"],
     includes: [],
     deliverables: [],
-    order: 1,
+    order: 2,
   },
 ];
 
@@ -44,7 +44,21 @@ describe("QuoteForm", () => {
     fireEvent.click(screen.getByRole("button", { name: /continuar por whatsapp/i }));
 
     expect(open).toHaveBeenCalledWith(expect.stringContaining("wa.me/595992396700"), "_blank", "noopener,noreferrer");
-    expect(screen.getByRole("status")).toBeTruthy();
+    // With "noopener" window.open always returns null, so null must not be read as "blocked".
+    expect(screen.getByRole("status").textContent).not.toContain("bloqueó");
+    open.mockRestore();
+  });
+
+  it("uses the site's default WhatsApp number when the env variable is missing", () => {
+    vi.stubEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "");
+    const open = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<QuoteForm selectedServices={selectedServices} />);
+
+    fireEvent.change(screen.getByPlaceholderText("Tu nombre"), { target: { value: "Ana" } });
+    fireEvent.change(screen.getByPlaceholderText("¿Qué te gustaría lograr?"), { target: { value: "Necesito una web." } });
+    fireEvent.click(screen.getByRole("button", { name: /continuar por whatsapp/i }));
+
+    expect(open).toHaveBeenCalledWith(expect.stringContaining("wa.me/595992396700"), "_blank", "noopener,noreferrer");
     open.mockRestore();
   });
 });

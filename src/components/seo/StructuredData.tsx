@@ -8,7 +8,7 @@ const structuredData = {
   url: siteConfig.url,
   description: siteConfig.description,
   areaServed: { "@type": "Country", name: "Paraguay" },
-  serviceType: ["Diseño web", "Contenido para redes sociales", "Catálogos digitales"],
+  serviceType: getServices().map((service) => service.title),
   contactPoint: {
     "@type": "ContactPoint",
     telephone: `+${siteConfig.whatsappNumber}`,
@@ -17,7 +17,7 @@ const structuredData = {
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Servicios digitales de VAURAL",
+    name: "Planes de VAURAL",
     itemListElement: getServices().map((service) => ({
       "@type": "Offer",
       itemOffered: {

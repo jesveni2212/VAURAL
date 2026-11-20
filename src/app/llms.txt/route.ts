@@ -1,3 +1,4 @@
+import { getServices } from "@/data/services";
 import { siteConfig } from "@/data/site";
 
 export function GET() {
@@ -9,13 +10,15 @@ export function GET() {
     "## Sitio",
     "",
     `- Inicio: ${siteConfig.url}/`,
-    `- Servicios: ${siteConfig.url}/#planes-web`,
-    `- Proceso: ${siteConfig.url}/#proceso`,
+    `- Recorrido de servicios: ${siteConfig.url}/#recorrido`,
+    `- Planes: ${siteConfig.url}/#planes`,
     `- Contacto: ${siteConfig.url}/#contacto`,
     "",
     "## Servicios",
     "",
-    "VAURAL ofrece soluciones combinables de diseño web, catálogos digitales, pedidos por WhatsApp y contenido para redes. No publica precios: cada consulta se orienta y cotiza según el alcance del proyecto.",
+    ...getServices().map((service) => `- ${service.title}: ${service.shortDescription} (${siteConfig.url}/servicios/${service.slug})`),
+    "",
+    "Los planes se combinan entre sí. VAURAL no publica precios: cada consulta se orienta y cotiza por WhatsApp según el alcance del proyecto.",
     "",
     "## Contacto",
     "",

@@ -2,83 +2,57 @@
 
 ## Propósito
 
-VAURAL es una empresa de servicios digitales que ofrece páginas web, contenido para redes sociales y catálogos digitales. El sitio debe comunicar una imagen creativa, elegante, formal y tecnológica, y convertir consultas en conversaciones por WhatsApp.
-
-La referencia visual principal es el template de agencia de marketing de Wix compartido por el usuario. Se puede tomar como inspiración de ritmo, composición y movimiento, pero no se deben copiar textos, imágenes, código ni recursos propietarios.
+VAURAL es una agencia digital con cuatro pilares: asesoría digital, páginas web, contenido para redes y marketing digital. El sitio debe atrapar desde el primer segundo, responder a cada interacción con un detalle y convertir consultas en conversaciones por WhatsApp, siendo ligero y muy rápido.
 
 ## Estado actual
 
-- La especificación del MVP está aprobada.
-- `index.html` es el prototipo visual existente y funciona como referencia de contenido y dirección estética.
-- La migración a una aplicación componentizada todavía no comenzó.
-- No borrar ni sobrescribir el prototipo actual sin revisar antes los cambios locales.
-- La especificación formal está en `docs/superpowers/specs/2026-10-25-vaural-mvp-design.md`.
+- Rediseño "Recorrido" (2026-11-19) implementado en la rama `redesign/recorrido`, sin commitear.
+- Especificación vigente: `docs/superpowers/specs/2026-11-19-vaural-redesign-design.md` (reemplaza la dirección visual y el alcance de secciones del MVP de 2026-10-25).
+- Plan ejecutado: `docs/superpowers/plans/2026-11-19-vaural-recorrido.md`.
+- `index.html` en la raíz es el prototipo original; no se usa en la app.
 
-## Stack aprobado para el MVP
+## Stack
 
-- Next.js con App Router.
-- TypeScript.
-- Tailwind CSS.
-- Motion para animaciones de interfaz.
-- GSAP únicamente para secuencias complejas del hero o escenas puntuales.
+- Next.js 16 (App Router), React 19, TypeScript estricto.
+- Tailwind CSS 4 (`@import "tailwindcss"` + tokens en `@theme`, sin `tailwind.config.ts`).
+- Motion con `LazyMotion` + componentes `m` (`motion/react-m`) solo para resortes y presencia (botones magnéticos, lente, barra, menú).
+- Swiper solo en el recorrido del hero, cargado con `next/dynamic` (`ssr: false`).
+- Entradas de texto y reveals al hacer scroll en CSS puro (`.word-rise`, `.reveal`).
 - Vercel como hosting.
 - Datos locales tipados para servicios y planes.
 - WhatsApp mediante enlace dinámico.
 - Sin precios públicos, pagos, autenticación ni panel administrativo en la primera versión.
 
-## Arquitectura prevista
+## Arquitectura
 
 ```text
 src/
-  app/
-    layout.tsx
-    page.tsx
-    servicios/[slug]/page.tsx
+  app/            layout (fuentes, tema), page (composición en servidor), servicios/[slug], globals.css
   components/
-    hero/
-    navigation/
-    catalog/
-    quote-form/
-    whatsapp/
-    ui/
-  data/
-    services.ts
-    site.ts
-  lib/
-    whatsapp.ts
-  types/
-    service.ts
-public/
-  images/
-  icons/
+    layout/       SiteHeader, MobileMenu, ThemeToggle, SiteFooter
+    hero/         HeroJourney, JourneySlider (Swiper diferido), JourneyScreens, CursorLens
+    services/     PillarBand, PlansIndex, PlanRow, PlanDialog, SelectionSummary, ServiceDetailActions, pillar-theme
+    contact/      ContactSection, CopyButton
+    motion/       MotionProvider, Magnetic, SplitWords
+    quote/        QuoteForm, QuoteSection
+    providers/    SelectionProvider
+    whatsapp/     FloatingWhatsApp, WhatsAppLink
+    ui/           icons
+  hooks/          useMediaQuery (useFinePointer)
+  data/           services.ts (4 pilares), site.ts
+  lib/            accent, theme, motion, format, whatsapp
+  types/          service.ts
 ```
 
-Los datos de servicios deben estar desacoplados de la presentación. La interfaz debe consumir una colección tipada, de modo que en una etapa futura pueda reemplazarse la fuente local por Supabase o un CMS sin rehacer los componentes.
+Los datos de servicios están desacoplados de la presentación (el color de cada pilar vive en `components/services/pillar-theme.ts`). La interfaz consume una colección tipada, de modo que la fuente local pueda reemplazarse por Supabase o un CMS sin rehacer los componentes.
 
-## Alcance del MVP
+## Alcance
 
-La experiencia principal será una landing editorial con catálogo de servicios:
+Página única: barra → hero "Recorrido" (4 etapas con Swiper) → cinta de pilares → planes interactivos (selección múltiple + panel de detalle) → contacto (formulario → WhatsApp) → pie.
 
-1. Hero inmersivo de VAURAL.
-2. Presentación de la propuesta.
-3. Servicios y planes.
-4. Selección múltiple de servicios.
-5. Resumen de la consulta.
-6. Formulario breve.
-7. Generación de mensaje personalizado para WhatsApp.
-8. Proceso de trabajo.
-9. Contacto y cierre.
+Los pilares son: asesoría digital, páginas web (incluye catálogos y tiendas con pedidos por WhatsApp), contenido para redes y marketing digital. Los slugs anteriores (`web-informativa`, `catalogo-digital`, etc.) redirigen con 308 desde `next.config.ts`.
 
-Los servicios iniciales son:
-
-- Web informativa.
-- Web interactiva.
-- Tienda online con pedidos por WhatsApp, sin pagos integrados.
-- Contenido para redes sociales.
-- Catálogos digitales.
-- Paquetes combinados.
-
-No mostrar precios públicos durante el MVP. La disponibilidad, orientación y cotización se gestionan por WhatsApp.
+No mostrar precios públicos. La disponibilidad, orientación y cotización se gestionan por WhatsApp.
 
 ## Flujo de conversión
 
@@ -104,16 +78,17 @@ El mensaje debe incluir los servicios seleccionados, los datos del contacto y la
 La entidad base debe ser equivalente a:
 
 ```ts
+type PillarId = "asesoria" | "web" | "contenido" | "marketing"
+
 type Service = {
-  id: string
+  id: PillarId
   slug: string
   title: string
-  category: "web" | "contenido" | "catalogo"
   shortDescription: string
   description: string
+  disciplines: string[]
   includes: string[]
   deliverables: string[]
-  featured?: boolean
   order: number
 }
 ```
@@ -122,12 +97,11 @@ No agregar campos de precio al modelo público del MVP. Si en el futuro se neces
 
 ## Dirección visual
 
-- Mantener la paleta actual de grafito, azul grisáceo, blanco y plata.
-- Usar un hero de alto impacto con fondo editorial oscuro, overlay, líneas guía y profundidad.
-- Priorizar animaciones de entrada por capas, revelado al hacer scroll y parallax muy sutil.
-- Evitar efectos estridentes, exceso de blur, desplazamientos bruscos o animaciones que compitan con el mensaje.
-- Mantener una jerarquía tipográfica fuerte y una navegación clara.
-- Las animaciones deben respetar `prefers-reduced-motion`.
+- Base blanco y negro (tema claro `#FAFAFA`/`#0A0A0A`; tema invertido con el botón ◐, recordado en `localStorage`).
+- El color aparece por interacción: un color por pilar (`asesoria #4D6BFF`, `web #C8F542`, `contenido #FF5FA2`, `marketing #FF8A2A`) escrito en `--accent` desde `src/lib/accent.ts`; el texto sobre color siempre es `#0A0A0A`.
+- Tipografía: Instrument Serif (titulares), Geist (texto), Geist Mono (etiquetas).
+- Curva de movimiento `cubic-bezier(0.16, 1, 0.3, 1)`.
+- Todas las animaciones respetan `prefers-reduced-motion` (Windows con "Efectos de animación" desactivado lo activa: la página se ve casi quieta a propósito).
 
 ## Rendimiento y accesibilidad
 
@@ -163,6 +137,8 @@ npm run test:e2e
 ```
 
 Para desarrollo local, crear `.env.local` a partir de `.env.example`. El archivo local no se versiona.
+
+`test:e2e` levanta `next dev` por defecto. Para probar contra producción: `npm run build`, `npm run start -- -p 3100` y `E2E_BASE_URL=http://localhost:3100 npm run test:e2e`. Los tests e2e fuerzan `reducedMotion: "no-preference"` para cubrir las animaciones.
 
 ## Reglas de colaboración
 

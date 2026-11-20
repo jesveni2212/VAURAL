@@ -1,23 +1,33 @@
 import { describe, expect, it } from "vitest";
 import { getServiceBySlug, getServices } from "./services";
 
-describe("service catalog", () => {
-  it("returns services in presentation order", () => {
-    const services = getServices();
-
-    expect(services.length).toBeGreaterThan(0);
-    expect(services.map((service) => service.order)).toEqual(
-      [...services].map((service) => service.order).sort((a, b) => a - b),
-    );
+describe("service pillars", () => {
+  it("returns the four pillars in presentation order", () => {
+    expect(getServices().map((service) => service.slug)).toEqual([
+      "asesoria-digital",
+      "paginas-web",
+      "contenido-para-redes",
+      "marketing-digital",
+    ]);
   });
 
-  it("resolves a service by slug", () => {
-    expect(getServiceBySlug("web-informativa")?.title).toBe("Web informativa");
+  it("resolves a pillar by slug", () => {
+    expect(getServiceBySlug("paginas-web")?.id).toBe("web");
     expect(getServiceBySlug("no-existe")).toBeUndefined();
   });
 
+  it("describes every pillar completely", () => {
+    for (const service of getServices()) {
+      expect(service.disciplines.length).toBeGreaterThan(0);
+      expect(service.includes.length).toBeGreaterThan(0);
+      expect(service.deliverables.length).toBeGreaterThan(0);
+    }
+  });
+
   it("does not expose public prices", () => {
-    expect(JSON.stringify(getServices()).toLowerCase()).not.toContain("precio");
-    expect(JSON.stringify(getServices()).toLowerCase()).not.toContain("$0");
+    const content = JSON.stringify(getServices()).toLowerCase();
+
+    expect(content).not.toContain("precio");
+    expect(content).not.toContain("$");
   });
 });
