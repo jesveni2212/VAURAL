@@ -53,7 +53,7 @@ export function PlansIndex({ services }: PlansIndexProps) {
               Elegí por dónde <em className="italic">empezar.</em>
             </h2>
           </div>
-          <p className="max-w-sm opacity-70">Combiná uno o varios. Te armamos una propuesta a medida y te la enviamos por WhatsApp.</p>
+          <p className="max-w-sm opacity-70">Tocá el nombre de un plan para ver qué incluye. Con «Elegir este plan» juntás los que te interesen y te armamos una propuesta por WhatsApp.</p>
         </div>
 
         <div className="label-mono mt-14 flex flex-wrap justify-between gap-3 border-b border-bg/15 pb-4 opacity-80">
@@ -61,7 +61,7 @@ export function PlansIndex({ services }: PlansIndexProps) {
             <span data-testid="plans-counter" className="text-bg">{padNumber((hovered ?? 0) + 1)}</span> / {padNumber(services.length)}
           </span>
           <span className="hidden sm:inline">Planes a medida · sin precios publicados</span>
-          <span>Seleccionados: {selectedIds.length}</span>
+          <span>Elegidos: {selectedIds.length}</span>
         </div>
 
         <ul onPointerLeave={deactivate}>

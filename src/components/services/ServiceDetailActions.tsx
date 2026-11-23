@@ -16,10 +16,10 @@ export function ServiceDetailActions({ serviceId }: { serviceId: PillarId }) {
         aria-pressed={selected}
         className={`rounded-full px-6 py-3.5 font-medium transition-colors ${selected ? "bg-accent text-on-accent" : "bg-fg text-bg hover:bg-accent hover:text-on-accent"}`}
       >
-        {selected ? "En tu consulta" : "Sumar a mi consulta"}
+        {selected ? "Elegido, tocá para quitar" : "Elegir este plan"}
       </button>
       <Link href="/#planes" className="rounded-full border border-fg px-6 py-3.5 font-medium transition-colors hover:bg-fg hover:text-bg">
-        Ver todos los planes
+        Ver otros planes
       </Link>
     </div>
   );

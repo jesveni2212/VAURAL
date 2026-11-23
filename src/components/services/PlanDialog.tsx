@@ -66,7 +66,7 @@ export function PlanDialog({ service, position, open, selected, onToggle, onNext
               aria-pressed={selected}
               className={`rounded-full px-5 py-3 font-medium transition-colors ${selected ? "bg-(--row-accent) text-on-accent" : "bg-fg text-bg hover:bg-(--row-accent) hover:text-on-accent"}`}
             >
-              {selected ? "En tu consulta" : "Sumar a mi consulta"}
+              {selected ? "Elegido, tocá para quitar" : "Elegir este plan"}
             </button>
             <button type="button" onClick={onNext} className="group inline-flex items-center gap-2 rounded-full border border-fg px-5 py-3 font-medium transition-colors hover:bg-fg hover:text-bg">
               Siguiente plan

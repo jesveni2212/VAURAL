@@ -70,7 +70,7 @@ export function HeroJourney({ services }: HeroJourneyProps) {
     <section
       id="recorrido"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden bg-bg"
+      className="relative isolate flex min-h-svh items-center overflow-hidden bg-bg"
       onPointerDown={markPointer}
       onFocus={trackKeyboardFocus}
       onBlur={releaseKeyboardFocus}
@@ -78,7 +78,7 @@ export function HeroJourney({ services }: HeroJourneyProps) {
       <Orbits />
       <CursorLens />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-5 pt-32 pb-20 md:grid-cols-[1fr_1.05fr] md:px-8 lg:gap-16 lg:pt-40 lg:pb-28">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-5 pt-28 pb-24 md:grid-cols-[1fr_1.05fr] md:px-8 lg:gap-16 lg:pt-32 lg:pb-28">
         <div>
           <p className="label-mono text-muted">Agencia digital · Asunción</p>
           <h1 id="hero-title" className="mt-5 font-serif text-[clamp(3.25rem,7.5vw,6.5rem)] leading-[0.95] tracking-tight">
@@ -164,6 +164,15 @@ export function HeroJourney({ services }: HeroJourneyProps) {
           />
         </div>
       </div>
+
+      <a
+        href="#planes"
+        aria-label="Bajar a los planes"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted transition-colors hover:text-fg sm:flex"
+      >
+        <span className="label-mono">Seguí bajando</span>
+        <span aria-hidden="true" className="h-8 w-px animate-pulse bg-current" />
+      </a>
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import type { CSSProperties, FocusEvent, MouseEvent, Ref } from "react";
 import type { Service } from "@/types/service";
 import { padNumber } from "@/lib/format";
+import { IconCheck } from "@/components/ui/icons";
 import { pillarAccent } from "./pillar-theme";
 
 type PlanRowProps = {
@@ -63,14 +64,16 @@ export function PlanRow({ service, index, active, dimmed, selected, titleRef, on
           type="button"
           onClick={onToggle}
           aria-pressed={selected}
-          aria-label={`${selected ? "Quitar" : "Seleccionar"} ${service.title}`}
-          className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-300 ${
+          className={`inline-flex items-center gap-2 rounded-full border-2 px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${
             selected
               ? "border-transparent bg-(--row-accent) text-on-accent group-data-[active=true]:bg-on-accent group-data-[active=true]:text-(--row-accent)"
               : "border-current hover:bg-current/10"
           }`}
         >
-          {selected ? "Seleccionado" : "Seleccionar"}
+          {selected ? <IconCheck className="size-4" /> : <span aria-hidden="true" className="text-lg leading-none">+</span>}
+          {selected ? "Elegido, tocá para quitar" : "Elegir este plan"}
+          {" "}
+          <span className="sr-only">({service.title})</span>
         </button>
       </div>
     </li>

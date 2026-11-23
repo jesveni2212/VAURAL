@@ -17,9 +17,9 @@ test("combina planes y prepara una consulta de WhatsApp", async ({ page }) => {
   const floatingHref = await floatingWhatsApp.getAttribute("href");
   expect(floatingHref).toContain("wa.me/595992396700");
 
-  await page.getByRole("button", { name: "Seleccionar Páginas web" }).click();
-  await expect(page.getByRole("button", { name: "Quitar Páginas web", exact: true })).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Seleccionar Marketing digital" }).click();
+  await page.getByRole("button", { name: "Elegir este plan (Páginas web)" }).click();
+  await expect(page.getByRole("button", { name: "Elegido, tocá para quitar (Páginas web)", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Elegir este plan (Marketing digital)" }).click();
   await expect(page.getByText("Elegiste 2 servicios.")).toBeVisible();
 
   await page.locator("#contacto").scrollIntoViewIfNeeded();

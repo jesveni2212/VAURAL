@@ -8,6 +8,7 @@ import { serializeJsonLd } from "@/lib/json-ld";
 import { VauralLogo } from "@/components/brand/VauralLogo";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { IconArrow } from "@/components/ui/icons";
 import { ServiceDetailActions } from "@/components/services/ServiceDetailActions";
 import { pillarAccent } from "@/components/services/pillar-theme";
 
@@ -68,8 +69,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         <article className="mx-auto grid max-w-7xl gap-14 px-5 pt-12 pb-24 md:grid-cols-[1.1fr_0.9fr] md:px-8 md:pt-20">
           <div>
-            <Link href="/#planes" className="label-mono text-muted hover:text-fg">
-              ← Volver a los planes
+            <Link
+              href="/#planes"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-5 py-3 font-semibold text-on-accent shadow-sm transition-transform duration-300 hover:-translate-x-1"
+            >
+              <IconArrow className="size-4 rotate-180 transition-transform duration-300 group-hover:-translate-x-0.5" />
+              Volver a los planes
             </Link>
             <p className="label-mono mt-10 flex items-center gap-2 text-muted">
               <span className="size-2 rounded-full bg-accent" />

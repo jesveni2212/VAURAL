@@ -44,7 +44,7 @@ export function SelectionSummary() {
       ) : (
         <div>
           <p className="label-mono opacity-60">Tu consulta</p>
-          <p className="mt-2 text-lg opacity-80">Seleccioná uno o varios planes para preparar una consulta personalizada.</p>
+          <p className="mt-2 text-lg opacity-80">Tocá «Elegir este plan» en los que te interesen y preparamos tu consulta personalizada.</p>
         </div>
       )}
     </aside>

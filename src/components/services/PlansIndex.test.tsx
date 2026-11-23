@@ -18,9 +18,9 @@ describe("PlansIndex", () => {
   it("selects a plan and summarises the selection", () => {
     renderPlans();
 
-    fireEvent.click(screen.getByRole("button", { name: "Seleccionar Páginas web" }));
+    fireEvent.click(screen.getByRole("button", { name: "Elegir este plan (Páginas web)" }));
 
-    expect(screen.getByRole("button", { name: "Quitar Páginas web" }).getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByRole("button", { name: "Elegido, tocá para quitar (Páginas web)" }).getAttribute("aria-pressed")).toBe("true");
     expect(screen.getByText("Elegiste 1 servicio.")).toBeTruthy();
   });
 
