@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { getServices } from "@/data/services";
 import { SelectionProvider } from "@/components/providers/SelectionProvider";
 import { PlansIndex } from "./PlansIndex";
@@ -22,6 +22,19 @@ describe("PlansIndex", () => {
 
     expect(screen.getByRole("button", { name: "Elegido, tocá para quitar (Páginas web)" }).getAttribute("aria-pressed")).toBe("true");
     expect(screen.getByText("Elegiste 1 servicio.")).toBeTruthy();
+  });
+
+  it("takes the visitor to the summary when a plan is chosen, but not when it is removed", async () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    renderPlans();
+
+    fireEvent.click(screen.getByRole("button", { name: "Elegir este plan (Páginas web)" }));
+    await vi.waitFor(() => expect(scrollIntoView).toHaveBeenCalledTimes(1));
+
+    fireEvent.click(screen.getByRole("button", { name: "Elegido, tocá para quitar (Páginas web)" }));
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    expect(scrollIntoView).toHaveBeenCalledTimes(1);
   });
 
   it("treats keyboard focus like hover: highlights the row, counts it and tints the page", () => {

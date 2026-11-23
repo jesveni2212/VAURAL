@@ -96,6 +96,16 @@ test("el primer pantallazo muestra la cinta de pilares completa", async ({ page 
   await expect.poll(() => band.evaluate((el) => Math.round(el.getBoundingClientRect().bottom - innerHeight))).toBeLessThanOrEqual(0);
 });
 
+test("elegir un plan desde el detalle cierra el panel y lleva al resumen de la consulta", async ({ page }) => {
+  await page.goto("/");
+  await plans(page).getByRole("link", { name: "Páginas web" }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Elegir este plan" }).click();
+
+  await expect(page.getByRole("dialog")).toBeHidden();
+  const next = page.getByRole("link", { name: "Continuar con mi consulta" });
+  await expect(next).toBeInViewport();
+});
+
 test("invierte los colores y lo recuerda al volver", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Invertir colores" }).click();

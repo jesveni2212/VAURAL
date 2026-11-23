@@ -20,6 +20,8 @@ export function PlansIndex({ services }: PlansIndexProps) {
   const [dialogIndex, setDialogIndex] = useState<number | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const titleRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const skipFocusReturn = useRef(false);
   const dialogService = dialogIndex === null ? null : services[dialogIndex];
 
   // Hovering (or focusing) a plan tints the whole page with that pillar's colour.
@@ -40,7 +42,26 @@ export function PlansIndex({ services }: PlansIndexProps) {
 
   function closePlan() {
     setDialogOpen(false);
-    if (dialogIndex !== null) titleRefs.current[dialogIndex]?.focus();
+    // After choosing a plan the visitor goes to the summary; returning focus to the title would scroll back up.
+    if (skipFocusReturn.current) skipFocusReturn.current = false;
+    else if (dialogIndex !== null) titleRefs.current[dialogIndex]?.focus();
+  }
+
+  /** Choosing a plan (not removing one) takes the visitor to the summary with its "continue" action. */
+  function chooseService(service: Service, fromDialog = false) {
+    const wasSelected = selectedIds.includes(service.id);
+    toggleService(service.id);
+    if (wasSelected) return;
+
+    if (fromDialog) {
+      skipFocusReturn.current = true;
+      setDialogOpen(false);
+    }
+    // Wait a tick: the summary grows once the choice renders and the dialog restores focus on close.
+    setTimeout(() => {
+      summaryRef.current?.scrollIntoView?.({ block: "center" });
+      summaryRef.current?.focus({ preventScroll: true });
+    }, 60);
   }
 
   return (
@@ -79,12 +100,14 @@ export function PlansIndex({ services }: PlansIndexProps) {
               onActivate={() => activate(index)}
               onDeactivate={deactivate}
               onOpen={() => openPlan(index)}
-              onToggle={() => toggleService(service.id)}
+              onToggle={() => chooseService(service)}
             />
           ))}
         </ul>
 
-        <SelectionSummary />
+        <div ref={summaryRef} tabIndex={-1} className="outline-none">
+          <SelectionSummary />
+        </div>
       </div>
 
       <PlanDialog
@@ -92,7 +115,7 @@ export function PlansIndex({ services }: PlansIndexProps) {
         position={(dialogIndex ?? 0) + 1}
         open={dialogOpen}
         selected={dialogService ? selectedIds.includes(dialogService.id) : false}
-        onToggle={() => dialogService && toggleService(dialogService.id)}
+        onToggle={() => dialogService && chooseService(dialogService, true)}
         onNext={() => setDialogIndex(((dialogIndex ?? 0) + 1) % services.length)}
         onClose={closePlan}
       />
