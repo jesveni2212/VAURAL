@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "motion": "latest",
-    "next": "latest",
+    "next": "^16.4.6",
     "react": "latest",
     "react-dom": "latest",
     "swiper": "^14.4.0"
@@ -22,15 +22,12 @@
   "devDependencies": {
     "@playwright/test": "latest",
     "@tailwindcss/postcss": "^4.3.3",
-    "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
-    "@testing-library/user-event": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "autoprefixer": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest",
+    "eslint-config-next": "^16.4.6",
     "jsdom": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
