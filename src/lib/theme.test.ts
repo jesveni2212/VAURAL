@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { applyTheme, readStoredTheme, THEME_STORAGE_KEY, toggleTheme } from "./theme";
+import { applyTheme, THEME_STORAGE_KEY, toggleTheme } from "./theme";
 
 describe("theme", () => {
   afterEach(() => {
@@ -22,15 +22,11 @@ describe("theme", () => {
     expect(document.documentElement.dataset.theme).toBe("light");
   });
 
-  it("falls back to light when storage is blocked", () => {
-    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
-      throw new Error("blocked");
-    });
+  it("still applies the theme when storage is blocked", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new Error("blocked");
     });
 
-    expect(readStoredTheme()).toBe("light");
     expect(() => applyTheme("dark")).not.toThrow();
     expect(document.documentElement.dataset.theme).toBe("dark");
   });

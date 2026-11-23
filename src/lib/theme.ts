@@ -10,15 +10,7 @@ export const THEME_INIT_SCRIPT = `try{if(localStorage.getItem("${THEME_STORAGE_K
 const REVEAL_DURATION_MS = 700;
 const REVEAL_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 
-export function readStoredTheme(): Theme {
-  try {
-    return localStorage.getItem(THEME_STORAGE_KEY) === "dark" ? "dark" : "light";
-  } catch {
-    return "light";
-  }
-}
-
-export function currentTheme(): Theme {
+function currentTheme(): Theme {
   return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 

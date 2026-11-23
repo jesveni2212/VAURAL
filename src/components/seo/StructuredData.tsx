@@ -1,5 +1,6 @@
 import { getServices } from "@/data/services";
 import { siteConfig } from "@/data/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -35,7 +36,7 @@ export function StructuredData() {
     <script
       id="vaural-structured-data"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
     />
   );
 }

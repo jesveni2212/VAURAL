@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getServices } from "@/data/services";
 import { siteConfig } from "@/data/site";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { VauralLogo } from "@/components/brand/VauralLogo";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -57,7 +58,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <>
       <main style={{ "--accent": pillarAccent[service.id] } as CSSProperties}>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceStructuredData) }} />
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8">
           <Link href="/" aria-label="VAURAL, ir al inicio">
             <VauralLogo className="h-7 w-auto" />

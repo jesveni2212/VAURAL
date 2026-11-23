@@ -8,9 +8,9 @@ import type { PillarId } from "@/types/service";
 import { JourneyScreen } from "./JourneyScreens";
 import "swiper/css";
 
-export const JOURNEY_AUTOPLAY_MS = 3200;
+const JOURNEY_AUTOPLAY_MS = 3200;
 
-export type JourneySliderProps = {
+type JourneySliderProps = {
   pillars: PillarId[];
   labels: string[];
   active: number;
@@ -20,10 +20,12 @@ export type JourneySliderProps = {
   onChange: (index: number) => void;
   /** 0..1 elapsed share of the current autoplay delay. */
   onProgress: (progress: number) => void;
+  /** Swiper is mounted: the parent can drop its static fallback screen. */
+  onReady: () => void;
 };
 
 /** The device screens: swipeable, keyboard-driven and auto-advancing. Loaded lazily by HeroJourney. */
-export default function JourneySlider({ pillars, labels, active, autoplay, paused, onChange, onProgress }: JourneySliderProps) {
+export default function JourneySlider({ pillars, labels, active, autoplay, paused, onChange, onProgress, onReady }: JourneySliderProps) {
   const swiperRef = useRef<SwiperInstance | null>(null);
   // Refs keep the handlers stable for Swiper while always calling the latest callbacks.
   const onChangeRef = useRef(onChange);
@@ -52,6 +54,8 @@ export default function JourneySlider({ pillars, labels, active, autoplay, pause
       modules={[Autoplay, Keyboard, A11y]}
       className="h-full"
       loop
+      // Start on the step the visitor may have chosen while the slider was loading.
+      initialSlide={active}
       speed={700}
       grabCursor
       autoplay={autoplay ? { delay: JOURNEY_AUTOPLAY_MS, disableOnInteraction: false, pauseOnMouseEnter: true } : false}
@@ -63,6 +67,7 @@ export default function JourneySlider({ pillars, labels, active, autoplay, pause
       }}
       onSwiper={(swiper) => {
         swiperRef.current = swiper;
+        onReady();
       }}
       // Event props, not the `on` option: the React wrapper replaces `on` with its own handlers.
       onSlideChange={(swiper) => onChangeRef.current(swiper.realIndex)}

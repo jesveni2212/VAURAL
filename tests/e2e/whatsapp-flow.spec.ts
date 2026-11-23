@@ -102,8 +102,11 @@ test.describe("con movimiento reducido", () => {
 
   test("el titular aparece sin retardos escalonados", async ({ page }) => {
     await page.goto("/");
-    const delays = await page.locator("#hero-title [data-word]").evaluateAll((words) => words.map((word) => getComputedStyle(word).animationDelay));
+    await expect(page.locator("#hero-title")).toBeVisible();
+    const delays = () =>
+      page.locator("#hero-title [data-word]").evaluateAll((words) => [...new Set(words.map((word) => getComputedStyle(word).animationDelay))]);
 
-    expect(new Set(delays)).toEqual(new Set(["0s"]));
+    // Polled: under a parallel run the first read can land before styles apply.
+    await expect.poll(delays).toEqual(["0s"]);
   });
 });

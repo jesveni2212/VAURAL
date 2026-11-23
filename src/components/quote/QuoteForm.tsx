@@ -122,7 +122,7 @@ export function QuoteForm({ selectedServices }: QuoteFormProps) {
         </button>
       </Magnetic>
       {status ? (
-        <p className={`mt-4 text-sm ${status.startsWith("No") ? "text-red-600" : "text-muted"}`} role="status">
+        <p className={`mt-4 text-sm ${status.startsWith("No") ? "text-danger" : "text-muted"}`} role="status">
           {status}
         </p>
       ) : null}
@@ -148,5 +148,5 @@ function Field({ label, error, wide = false, children }: { label: string; error?
 }
 
 function FieldError({ message }: { message?: string }) {
-  return message ? <span className="mt-2 block text-sm text-red-600">{message}</span> : null;
+  return message ? <span className="mt-2 block text-sm text-danger">{message}</span> : null;
 }

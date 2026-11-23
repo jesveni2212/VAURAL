@@ -9,7 +9,6 @@ VAURAL es una agencia digital con cuatro pilares: asesoría digital, páginas we
 - Rediseño "Recorrido" (2026-11-19) implementado en la rama `redesign/recorrido`, sin commitear.
 - Especificación vigente: `docs/superpowers/specs/2026-11-19-vaural-redesign-design.md` (reemplaza la dirección visual y el alcance de secciones del MVP de 2026-10-25).
 - Plan ejecutado: `docs/superpowers/plans/2026-11-19-vaural-recorrido.md`.
-- `index.html` en la raíz es el prototipo original; no se usa en la app.
 
 ## Stack
 
@@ -40,7 +39,7 @@ src/
     ui/           icons
   hooks/          useMediaQuery (useFinePointer)
   data/           services.ts (4 pilares), site.ts
-  lib/            accent, theme, motion, format, whatsapp
+  lib/            accent, theme, motion, format, json-ld, whatsapp
   types/          service.ts
 ```
 

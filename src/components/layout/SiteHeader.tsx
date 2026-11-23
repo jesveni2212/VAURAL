@@ -9,7 +9,7 @@ import { headerState } from "./header-visibility";
 import { VauralLogo } from "@/components/brand/VauralLogo";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { IconClose, IconMenu } from "@/components/ui/icons";
-import { MobileMenu } from "./MobileMenu";
+import { MobileMenu, type MenuCloseReason } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
@@ -17,6 +17,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [focusInside, setFocusInside] = useState(false);
   const lastY = useRef(0);
+  const menuToggle = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -25,7 +26,10 @@ export function SiteHeader() {
   });
 
   const { compact, hidden } = headerState(scroll.y, scroll.previousY, menuOpen || focusInside);
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeMenu = useCallback((reason: MenuCloseReason = "navigate") => {
+    setMenuOpen(false);
+    if (reason === "escape") menuToggle.current?.focus();
+  }, []);
 
   return (
     <m.header
@@ -44,7 +48,7 @@ export function SiteHeader() {
           compact ? "max-w-5xl border-line bg-bg/80 py-2 pr-2 pl-5 backdrop-blur-md" : "max-w-7xl border-transparent py-3 pr-1 pl-2"
         }`}
       >
-        <a href="#recorrido" aria-label="VAURAL, ir al inicio" className="flex items-center gap-2.5" onClick={closeMenu}>
+        <a href="#recorrido" aria-label="VAURAL, ir al inicio" className="flex items-center gap-2.5" onClick={() => closeMenu()}>
           <span className="size-2 animate-pulse-dot rounded-full bg-accent" aria-hidden="true" />
           <VauralLogo className="h-6 w-auto sm:h-7" />
         </a>
@@ -66,6 +70,7 @@ export function SiteHeader() {
             </a>
           </Magnetic>
           <button
+            ref={menuToggle}
             type="button"
             className="flex items-center gap-2 rounded-full border border-line px-3 py-2 text-sm md:hidden"
             aria-expanded={menuOpen}

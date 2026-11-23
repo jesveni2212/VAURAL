@@ -29,7 +29,8 @@ describe("QuoteForm", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /continuar por whatsapp/i }));
 
-    expect(screen.getByText("Ingresá tu nombre.")).toBeTruthy();
+    // Themed error colour (AA on both the light and the inverted theme).
+    expect(screen.getByText("Ingresá tu nombre.").className).toContain("text-danger");
     expect(screen.getByText("Seleccioná al menos un servicio.")).toBeTruthy();
     expect(screen.getByText("Contanos brevemente qué necesitás lograr.")).toBeTruthy();
   });

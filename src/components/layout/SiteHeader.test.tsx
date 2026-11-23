@@ -27,6 +27,7 @@ describe("SiteHeader", () => {
 
     fireEvent.keyDown(window, { key: "Escape" });
     expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(toggle);
   });
 
   it("hides the Hablemos pill on phones so the bar never overflows", () => {

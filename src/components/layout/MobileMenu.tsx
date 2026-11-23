@@ -6,16 +6,19 @@ import * as m from "motion/react-m";
 import { siteConfig } from "@/data/site";
 import { EASE_EXPO } from "@/lib/motion";
 
+export type MenuCloseReason = "escape" | "navigate";
+
 type MobileMenuProps = {
   open: boolean;
-  onClose: () => void;
+  /** "escape" means focus should go back to the toggle; "navigate" lets the link move it. */
+  onClose: (reason: MenuCloseReason) => void;
 };
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   useEffect(() => {
     if (!open) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") onClose("escape");
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
@@ -37,7 +40,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             <m.a
               key={item.href}
               href={item.href}
-              onClick={onClose}
+              onClick={() => onClose("navigate")}
               initial={{ opacity: 0, x: -14 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.06 * index, duration: 0.5, ease: EASE_EXPO }}

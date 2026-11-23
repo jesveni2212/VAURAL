@@ -4,7 +4,6 @@ import { type FocusEvent, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useReducedMotion } from "motion/react";
 import type { Service } from "@/types/service";
-import { getServices } from "@/data/services";
 import { setBaseAccent } from "@/lib/accent";
 import { padNumber } from "@/lib/format";
 import { pillarAccent, pillarShortLabel } from "@/components/services/pillar-theme";
@@ -14,11 +13,9 @@ import { IconArrow, IconPause, IconPlay } from "@/components/ui/icons";
 import { CursorLens } from "./CursorLens";
 import { JourneyScreen } from "./JourneyScreens";
 
-// Swiper is fetched after the page is interactive; until then (and without JS) the first screen is shown.
-const JourneySlider = dynamic(() => import("./JourneySlider"), {
-  ssr: false,
-  loading: () => <JourneyScreen id={getServices()[0].id} />,
-});
+// Swiper is fetched after the page is interactive; until it is ready (and without JS)
+// HeroJourney paints the active step's screen itself.
+const JourneySlider = dynamic(() => import("./JourneySlider"), { ssr: false });
 
 type HeroJourneyProps = {
   services: Service[];
@@ -28,6 +25,7 @@ export function HeroJourney({ services }: HeroJourneyProps) {
   const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [keyboardInside, setKeyboardInside] = useState(false);
+  const [sliderReady, setSliderReady] = useState(false);
   const autoplay = !useReducedMotion();
   const stepRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const pointerDown = useRef(false);
@@ -149,6 +147,11 @@ export function HeroJourney({ services }: HeroJourneyProps) {
           data-paused={paused}
           className="relative aspect-[4/3.6] overflow-hidden rounded-[28px] border border-white/10 bg-[#0A0A0A] outline-1 outline-offset-8 outline-accent sm:aspect-[4/3.3]"
         >
+          {sliderReady ? null : (
+            <div className="absolute inset-0">
+              <JourneyScreen id={current.id} />
+            </div>
+          )}
           <JourneySlider
             pillars={services.map((service) => service.id)}
             labels={services.map((service) => service.title)}
@@ -157,6 +160,7 @@ export function HeroJourney({ services }: HeroJourneyProps) {
             paused={paused}
             onChange={setActive}
             onProgress={showProgress}
+            onReady={() => setSliderReady(true)}
           />
         </div>
       </div>

@@ -29,6 +29,15 @@ describe("HeroJourney", () => {
     expect(document.documentElement.style.getPropertyValue("--accent")).toBe("#C8F542");
   });
 
+  it("shows the chosen step's screen while the slider is still loading", () => {
+    render(<HeroJourney services={getServices()} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Web" }));
+
+    expect(screen.getByText("TU MARCA")).toBeTruthy();
+    expect(screen.queryByText("Plan para tu marca")).toBeNull();
+  });
+
   it("lets visitors pause the auto-advancing journey", () => {
     render(<HeroJourney services={getServices()} />);
     const pause = screen.getByRole("button", { name: "Pausar recorrido" });
