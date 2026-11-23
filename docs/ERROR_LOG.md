@@ -18,3 +18,4 @@ Formato: **qué pasó** — causa raíz — cómo evitarlo.
 - **El JSON-LD se insertaba con `JSON.stringify` crudo.** — Un valor con `</script>` habría cerrado la etiqueta. — Serializar con `serializeJsonLd` (`src/lib/json-ld.ts`), que escapa `<` como `<`.
 - **El rojo de error no llegaba a AA en el tema invertido.** — Color fijo (`text-red-600`) para dos fondos opuestos. — Usar el token por tema `--danger` (`text-danger`).
 - **Se eliminó código y archivos sin uso**: `index.html` (prototipo), borradores del logo en `public/`, `readStoredTheme`, y las dependencias `autoprefixer`, `@testing-library/jest-dom` y `@testing-library/user-event`.
+- **Casi todas las dependencias estaban en `latest`.** — Plantilla inicial sin versiones fijadas; solo el lock las congelaba. — Fijadas con `^` + versión instalada; `npm audit fix` subió `typescript-eslint` a 8.73.0 (minimatch 11.0.9, cierra GHSA-g3hv-75wg-m249).

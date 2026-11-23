@@ -6,7 +6,8 @@ VAURAL es una agencia digital con cuatro pilares: asesoría digital, páginas we
 
 ## Estado actual
 
-- Rediseño "Recorrido" (2026-11-19) implementado en la rama `redesign/recorrido`, sin commitear.
+- Rediseño "Recorrido" (2026-11-19) en producción desde `main` (https://vaural.vercel.app).
+- Dependencias fijadas con `^` sobre la versión probada (nunca `latest`): una versión mayor nueva se adopta a propósito, con lint, tests y build.
 - Especificación vigente: `docs/superpowers/specs/2026-11-19-vaural-redesign-design.md` (reemplaza la dirección visual y el alcance de secciones del MVP de 2026-10-25).
 - Plan ejecutado: `docs/superpowers/plans/2026-11-19-vaural-recorrido.md`.
 
