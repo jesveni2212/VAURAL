@@ -37,10 +37,10 @@ export function PlanDialog({ service, position, open, selected, onToggle, onNext
         if (event.target === event.currentTarget) event.currentTarget.close();
       }}
       aria-labelledby="plan-dialog-title"
-      className="plan-dialog m-auto max-h-[88vh] w-[min(92vw,46rem)] overflow-y-auto rounded-3xl bg-bg p-0 text-fg"
+      className="plan-dialog m-auto max-h-[94svh] w-[min(94vw,54rem)] overflow-y-auto rounded-3xl bg-bg p-0 text-fg"
     >
       {service ? (
-        <article style={{ "--row-accent": pillarAccent[service.id] } as CSSProperties} className="p-6 md:p-10">
+        <article style={{ "--row-accent": pillarAccent[service.id] } as CSSProperties} className="p-6 md:p-8">
           <header className="flex items-center justify-between gap-4">
             <p className="label-mono flex items-center gap-2 text-muted">
               <span className="size-2 rounded-full bg-(--row-accent)" />
@@ -51,19 +51,19 @@ export function PlanDialog({ service, position, open, selected, onToggle, onNext
             </button>
           </header>
 
-          <h2 id="plan-dialog-title" className="mt-6 font-serif text-5xl leading-none md:text-6xl">
+          <h2 id="plan-dialog-title" className="mt-4 font-serif text-5xl leading-none md:text-5xl">
             {service.title}
           </h2>
-          <p className="mt-5 max-w-xl text-lg text-muted">{service.description}</p>
+          <p className="mt-4 max-w-2xl text-lg text-muted">{service.description}</p>
 
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
+          <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-10">
             <DetailList title="Incluye" items={service.includes} />
             <DetailList title="Entregables" items={service.deliverables} />
           </div>
 
-          <p className="mt-8 border-t border-line pt-5 text-sm text-muted">Sin precios publicados: te orientamos y cotizamos por WhatsApp según tu proyecto.</p>
+          <p className="mt-6 border-t border-line pt-4 text-sm text-muted">Sin precios publicados: te orientamos y cotizamos por WhatsApp según tu proyecto.</p>
 
-          <footer className="mt-6 flex flex-wrap items-center gap-3">
+          <footer className="mt-5 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={onToggle}
@@ -90,7 +90,7 @@ function DetailList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
       <h3 className="label-mono text-muted">{title}</h3>
-      <ul className="mt-3 space-y-2.5">
+      <ul className="mt-3 space-y-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
             <span className="mt-2 size-1.5 shrink-0 bg-(--row-accent)" />
