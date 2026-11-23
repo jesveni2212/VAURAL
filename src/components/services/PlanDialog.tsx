@@ -32,6 +32,10 @@ export function PlanDialog({ service, position, open, selected, onToggle, onNext
     <dialog
       ref={ref}
       onClose={onClose}
+      // The dialog has no padding, so a click whose target is the <dialog> itself landed on the backdrop.
+      onClick={(event) => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}
       aria-labelledby="plan-dialog-title"
       className="plan-dialog m-auto max-h-[88vh] w-[min(92vw,46rem)] overflow-y-auto rounded-3xl bg-bg p-0 text-fg"
     >

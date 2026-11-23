@@ -70,6 +70,32 @@ test("el detalle de un plan se abre y se cierra con Escape devolviendo el foco",
   await expect(title).toBeFocused();
 });
 
+test("el detalle de un plan también se cierra con un clic fuera de él", async ({ page }) => {
+  await page.goto("/");
+  await plans(page).getByRole("link", { name: "Páginas web" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+
+  await page.mouse.click(5, 5);
+
+  await expect(dialog).toBeHidden();
+});
+
+test("el menú lleva a Planes con la sección alineada arriba", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("navigation", { name: "Principal" }).getByRole("link", { name: "Planes" }).click();
+
+  await expect.poll(async () => Math.round(await plans(page).evaluate((el) => el.getBoundingClientRect().top))).toBe(0);
+});
+
+test("el primer pantallazo muestra la cinta de pilares completa", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const band = page.locator("#recorrido + div");
+
+  await expect.poll(() => band.evaluate((el) => Math.round(el.getBoundingClientRect().bottom - innerHeight))).toBeLessThanOrEqual(0);
+});
+
 test("invierte los colores y lo recuerda al volver", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Invertir colores" }).click();

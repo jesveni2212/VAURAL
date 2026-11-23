@@ -106,7 +106,8 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  [id] {
+  /* Full-bleed sections land flush with the top: their own padding already clears the floating header. */
+  [id]:not(section) {
     scroll-margin-top: 88px;
   }
 
